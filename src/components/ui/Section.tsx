@@ -1,16 +1,18 @@
 import type { ReactNode } from "react";
-import type { SectionId } from "@/lib/constants";
+import { SECTION_IDS, type SectionId } from "@/lib/constants";
 import { Container } from "./Container";
 
 type SectionProps = {
   id: SectionId;
-  index: number;
   title: string;
   children?: ReactNode;
 };
 
-export function Section({ id, index, title, children }: SectionProps) {
+// Title column on the left (4/12) and content on the right (8/12) from `lg`, stacked below.
+// The index number follows document order, so reordering SECTION_IDS renumbers the page.
+export function Section({ id, title, children }: SectionProps) {
   const titleId = `${id}-title`;
+  const index = SECTION_IDS.indexOf(id) + 1;
 
   return (
     <section id={id} aria-labelledby={titleId} className="py-section">

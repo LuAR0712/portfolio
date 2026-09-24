@@ -7,6 +7,7 @@ const paths = {
   close: "M6 6l12 12M18 6 6 18",
   arrowUp: "M12 19V5M5 12l7-7 7 7",
   arrowUpRight: "M7 17 17 7M8 7h9v9",
+  download: "M12 4v11M7 10l5 5 5-5M5 20h14",
 } as const;
 
 export type IconName = keyof typeof paths;
