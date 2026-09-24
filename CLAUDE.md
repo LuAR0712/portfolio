@@ -43,13 +43,13 @@ CI runs `lint`, `typecheck`, `test` and `build` on every push. All four must pas
 src/
   app/[locale]/        layout.tsx, page.tsx, opengraph-image.tsx
   app/                 sitemap.ts, robots.ts
-  components/ui/       primitives: Button, Card, Badge, Section, Container
+  components/ui/       primitives: Container, Section, ButtonLink (+ button-styles), Icon, DateRangeText
   components/layout/   Header, Footer, SkipLink, MobileNav, LanguageSwitcher, ThemeToggle, ThemeProvider, ScrollProgress
   components/sections/ Hero, About, Experience, Projects, Skills, Education, Contact
   features/contact/    schema, server action, form components, tests (self-contained feature)
   content/             typed data: experience, projects, skills, education, profile
   i18n/                routing.ts, request.ts, navigation.ts
-  lib/                 utils, motion.ts (animation variants), env.ts (validated env), constants
+  lib/                 utils, dates (partial dates), motion.ts (animation variants), env.ts (validated env), constants
   hooks/               custom hooks
   styles/              globals.css (tokens, base layers)
   test/                shared test helpers (renderWithIntl, expectNoAxeViolations)
