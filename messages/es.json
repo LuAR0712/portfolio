@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "title": "Luciano Rossi — Desarrollador Frontend",
+    "description": "Desarrollador Frontend con más de cuatro años construyendo aplicaciones empresariales para los sectores energético y financiero con React, TypeScript y Next.js."
+  },
+  "skipLink": "Saltar al contenido principal",
+  "header": {
+    "homeLabel": "{name}, ir al inicio",
+    "navLabel": "Principal",
+    "menu": {
+      "open": "Abrir menú",
+      "close": "Cerrar menú"
+    }
+  },
+  "nav": {
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "skills": "Tecnologías",
+    "education": "Formación",
+    "contact": "Contacto"
+  },
+  "theme": {
+    "toLight": "Cambiar a tema claro",
+    "toDark": "Cambiar a tema oscuro"
+  },
+  "language": {
+    "label": "Idioma",
+    "switchTo": "Ver el sitio en {language}",
+    "names": {
+      "es": "español",
+      "en": "inglés"
+    }
+  },
+  "hero": {
+    "headline": "Desarrollador Frontend · React · TypeScript · Next.js"
+  },
+  "sections": {
+    "about": {
+      "title": "Sobre mí"
+    },
+    "experience": {
+      "title": "Experiencia"
+    },
+    "projects": {
+      "title": "Proyectos destacados"
+    },
+    "skills": {
+      "title": "Tecnologías"
+    },
+    "education": {
+      "title": "Formación"
+    },
+    "contact": {
+      "title": "Contacto"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} {name}",
+    "builtWith": "Diseñado y desarrollado con Next.js, TypeScript y Tailwind CSS.",
+    "contactLabel": "Contacto",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "newTab": "(se abre en una pestaña nueva)",
+    "backToTop": "Volver arriba"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La dirección que buscás no existe o cambió de lugar.",
+    "back": "Volver al inicio"
+  }
+}
