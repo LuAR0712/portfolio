@@ -28,7 +28,7 @@ npm run dev         # local dev server
 npm run build       # production build
 npm run start       # serve production build
 npm run lint        # ESLint, zero warnings allowed
-npm run typecheck   # tsc --noEmit
+npm run typecheck   # next typegen + tsc --noEmit
 npm test            # Vitest (run once)
 npm run test:watch  # Vitest watch mode
 npm run format      # Prettier write
@@ -44,7 +44,7 @@ src/
   app/[locale]/        layout.tsx, page.tsx, opengraph-image.tsx
   app/                 sitemap.ts, robots.ts
   components/ui/       primitives: Button, Card, Badge, Section, Container
-  components/layout/   Header, Footer, LanguageSwitcher, ThemeToggle, ScrollProgress
+  components/layout/   Header, Footer, SkipLink, MobileNav, LanguageSwitcher, ThemeToggle, ThemeProvider, ScrollProgress
   components/sections/ Hero, About, Experience, Projects, Skills, Education, Contact
   features/contact/    schema, server action, form components, tests (self-contained feature)
   content/             typed data: experience, projects, skills, education, profile
@@ -52,8 +52,10 @@ src/
   lib/                 utils, motion.ts (animation variants), env.ts (validated env), constants
   hooks/               custom hooks
   styles/              globals.css (tokens, base layers)
+  test/                shared test helpers (renderWithIntl, expectNoAxeViolations)
   proxy.ts             next-intl locale detection
-messages/es.json, messages/en.json
+  global.d.ts          next-intl type augmentation (typed message keys)
+messages/es.json, messages/en.json, messages.test.ts (key parity)
 public/cv/             luciano-rossi-cv-es.pdf, luciano-rossi-cv-en.pdf
 ```
 
