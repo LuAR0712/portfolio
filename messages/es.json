@@ -33,7 +33,12 @@
     }
   },
   "hero": {
-    "headline": "Desarrollador Frontend · React · TypeScript · Next.js"
+    "headline": "Desarrollador Frontend · React · TypeScript · Next.js",
+    "positioning": "Construyo aplicaciones empresariales para los sectores energético y financiero, desde la arquitectura del frontend hasta el último componente.",
+    "ctaProjects": "Ver proyectos",
+    "ctaContact": "Contactame",
+    "ctaCv": "Descargar CV",
+    "cvFormat": "(PDF)"
   },
   "sections": {
     "about": {
@@ -68,5 +73,117 @@
     "title": "Página no encontrada",
     "description": "La dirección que buscás no existe o cambió de lugar.",
     "back": "Volver al inicio"
+  },
+  "about": {
+    "paragraphs": [
+      "Hace más de cuatro años que construyo aplicaciones empresariales para los sectores energético y financiero.",
+      "Hoy soy el único responsable del frontend de un producto de la célula Mobile de YPF: desde la arquitectura y el sistema de componentes hasta la implementación y el mantenimiento.",
+      "Tengo experiencia modernizando aplicaciones legacy hacia stacks actuales de React y TypeScript, y trabajando de forma coordinada con equipos de backend, UX y negocio."
+    ],
+    "facts": {
+      "experienceLabel": "Experiencia",
+      "experienceValue": "{years}+ años",
+      "sectorsLabel": "Sectores",
+      "sectorsValue": "Energía y finanzas",
+      "currentLabel": "Actualmente",
+      "currentValue": "Frontend de NexPlan · YPF"
+    }
+  },
+  "experience": {
+    "earlierLabel": "Antes"
+  },
+  "projects": {
+    "roleLabel": "Rol",
+    "stackLabel": "Stack",
+    "highlightsLabel": "Aspectos destacados"
+  },
+  "education": {
+    "inProgress": "En curso"
+  },
+  "contact": {
+    "lead": "¿Tenés una posición o un proyecto en mente? Escribime y te respondo a la brevedad.",
+    "emailLabel": "Email",
+    "linkedinLabel": "LinkedIn",
+    "newTab": "(se abre en una pestaña nueva)"
+  },
+  "content": {
+    "experience": {
+      "cda": {
+        "role": "Desarrollador Frontend",
+        "summary": "Desarrollo frontend de aplicaciones empresariales para clientes de los sectores energético y financiero: YPF, Banco Galicia, Itaú y Macro."
+      }
+    },
+    "earlierExperience": {
+      "danago": {
+        "role": "Gestor de ventas y diseño"
+      }
+    },
+    "projects": {
+      "nexplan": {
+        "title": "NexPlan",
+        "context": "YPF · célula Mobile",
+        "role": "Único desarrollador frontend",
+        "summary": "Producto desarrollado desde cero para la célula Mobile de YPF.",
+        "highlights": [
+          "Arquitectura frontend definida junto a un desarrollador senior; hoy soy el único frontend del proyecto.",
+          "Librería de componentes construida desde cero con styled-components a partir de los diseños de UX, pensada como plantilla base para los próximos desarrollos de la compañía.",
+          "Incorporación progresiva de tareas de backend en .NET: resolución de bugs y desarrollo de endpoints."
+        ]
+      },
+      "iap": {
+        "title": "IAP — Informatización de Proyectos",
+        "context": "YPF",
+        "role": "Responsable de ~90% del frontend",
+        "summary": "Sistema de gestión de los proyectos activos de la compañía en sus dimensiones administrativa, contable y presupuestaria.",
+        "highlights": [
+          "Migración de una aplicación existente en .NET 2.1 a una arquitectura actual con frontend React y BFF .NET, con aproximadamente el 90% del frontend a mi cargo.",
+          "Diseño en Figma de la totalidad de las vistas y del flujo de interacción, cubriendo la ausencia de un perfil de UX asignado.",
+          "Componentes propios sobre MUI con theme personalizado.",
+          "Colaboración en la configuración de despliegues en Azure."
+        ]
+      },
+      "financial": {
+        "title": "Sector financiero",
+        "context": "Banco Galicia, Itaú y Macro",
+        "role": "Desarrollador Frontend",
+        "summary": "Interfaces para entidades bancarias con React, TypeScript y Next.js, con pruebas unitarias en Jest.",
+        "highlights": [
+          "Desarrollo de interfaces con React, TypeScript y Next.js, cubiertas con pruebas unitarias en Jest.",
+          "Participación en el sistema de Información de Deudores de Banco Galicia."
+        ]
+      }
+    },
+    "skills": {
+      "categories": {
+        "languages": "Lenguajes",
+        "frontend": "Frontend",
+        "testing": "Testing",
+        "design": "Diseño",
+        "platform": "Backend y cloud",
+        "tools": "Herramientas"
+      },
+      "notes": {
+        "theming": "con theming",
+        "deployments": "configuración de despliegues",
+        "learning": "en formación"
+      }
+    },
+    "education": {
+      "uai": {
+        "title": "Ingeniería"
+      },
+      "coderhouse": {
+        "title": "Inglés para Desarrolladores · nivel Advanced"
+      },
+      "sanJose": {
+        "title": "Técnico Electrónico Industrial"
+      },
+      "cecies": {
+        "title": "Inglés B2"
+      }
+    }
+  },
+  "dates": {
+    "present": "actualidad"
   }
 }

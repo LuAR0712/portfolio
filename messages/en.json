@@ -33,7 +33,12 @@
     }
   },
   "hero": {
-    "headline": "Frontend Developer · React · TypeScript · Next.js"
+    "headline": "Frontend Developer · React · TypeScript · Next.js",
+    "positioning": "I build enterprise applications for the energy and financial sectors, from frontend architecture down to the last component.",
+    "ctaProjects": "See projects",
+    "ctaContact": "Get in touch",
+    "ctaCv": "Download CV",
+    "cvFormat": "(PDF)"
   },
   "sections": {
     "about": {
@@ -68,5 +73,117 @@
     "title": "Page not found",
     "description": "The address you're looking for doesn't exist or has moved.",
     "back": "Back to home"
+  },
+  "about": {
+    "paragraphs": [
+      "For over four years I've been building enterprise applications for the energy and financial sectors.",
+      "Today I'm the sole frontend owner of a product in YPF's Mobile unit: from architecture and the component system to implementation and maintenance.",
+      "I have experience modernizing legacy applications into current React and TypeScript stacks, working closely with backend, UX and business teams."
+    ],
+    "facts": {
+      "experienceLabel": "Experience",
+      "experienceValue": "{years}+ years",
+      "sectorsLabel": "Sectors",
+      "sectorsValue": "Energy and finance",
+      "currentLabel": "Currently",
+      "currentValue": "Frontend for NexPlan · YPF"
+    }
+  },
+  "experience": {
+    "earlierLabel": "Earlier"
+  },
+  "projects": {
+    "roleLabel": "Role",
+    "stackLabel": "Stack",
+    "highlightsLabel": "Highlights"
+  },
+  "education": {
+    "inProgress": "In progress"
+  },
+  "contact": {
+    "lead": "Have a role or a project in mind? Write to me and I'll get back to you shortly.",
+    "emailLabel": "Email",
+    "linkedinLabel": "LinkedIn",
+    "newTab": "(opens in a new tab)"
+  },
+  "content": {
+    "experience": {
+      "cda": {
+        "role": "Frontend Developer",
+        "summary": "Frontend development of enterprise applications for clients in the energy and financial sectors: YPF, Banco Galicia, Itaú and Macro."
+      }
+    },
+    "earlierExperience": {
+      "danago": {
+        "role": "Sales and design manager"
+      }
+    },
+    "projects": {
+      "nexplan": {
+        "title": "NexPlan",
+        "context": "YPF · Mobile unit",
+        "role": "Sole frontend developer",
+        "summary": "A product built from scratch for YPF's Mobile unit.",
+        "highlights": [
+          "Frontend architecture defined together with a senior developer; today I'm the only frontend developer on the project.",
+          "Component library built from scratch with styled-components from the UX designs, intended as the base template for the company's upcoming products.",
+          "Gradually taking on .NET backend work: bug fixing and endpoint development."
+        ]
+      },
+      "iap": {
+        "title": "IAP — Project Management System",
+        "context": "YPF",
+        "role": "Owner of ~90% of the frontend",
+        "summary": "A system to manage the company's active projects across their administrative, accounting and budget dimensions.",
+        "highlights": [
+          "Migration of an existing .NET 2.1 application to a modern architecture with a React frontend and a .NET BFF, with roughly 90% of the frontend under my ownership.",
+          "Designed every view and the interaction flow in Figma, covering for the lack of an assigned UX designer.",
+          "Custom components built on MUI with a tailored theme.",
+          "Helped configure deployments on Azure."
+        ]
+      },
+      "financial": {
+        "title": "Financial sector",
+        "context": "Banco Galicia, Itaú and Macro",
+        "role": "Frontend Developer",
+        "summary": "Interfaces for banks built with React, TypeScript and Next.js, with unit tests in Jest.",
+        "highlights": [
+          "Built interfaces with React, TypeScript and Next.js, covered by unit tests in Jest.",
+          "Contributed to Banco Galicia's debtor information system."
+        ]
+      }
+    },
+    "skills": {
+      "categories": {
+        "languages": "Languages",
+        "frontend": "Frontend",
+        "testing": "Testing",
+        "design": "Design",
+        "platform": "Backend and cloud",
+        "tools": "Tools"
+      },
+      "notes": {
+        "theming": "with theming",
+        "deployments": "deployment configuration",
+        "learning": "learning"
+      }
+    },
+    "education": {
+      "uai": {
+        "title": "Engineering"
+      },
+      "coderhouse": {
+        "title": "English for Developers · Advanced level"
+      },
+      "sanJose": {
+        "title": "Industrial Electronics Technician"
+      },
+      "cecies": {
+        "title": "English B2"
+      }
+    }
+  },
+  "dates": {
+    "present": "present"
   }
 }

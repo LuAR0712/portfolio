@@ -2,14 +2,15 @@
 import en from "./en.json";
 import es from "./es.json";
 
-type Tree = { [key: string]: string | Tree };
-
-function flatten(tree: Tree, prefix = ""): Map<string, string> {
+// Walks objects and arrays (e.g. highlights[]) down to string leaves: "a.b.0" → "…".
+function flatten(tree: object, prefix = ""): Map<string, string> {
   const entries = new Map<string, string>();
   for (const [key, value] of Object.entries(tree)) {
     const path = prefix ? `${prefix}.${key}` : key;
     if (typeof value === "string") entries.set(path, value);
-    else for (const [k, v] of flatten(value, path)) entries.set(k, v);
+    else if (value && typeof value === "object") {
+      for (const [k, v] of flatten(value, path)) entries.set(k, v);
+    } else throw new Error(`Unexpected value at ${path}`);
   }
   return entries;
 }
