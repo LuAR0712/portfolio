@@ -111,6 +111,7 @@
 :root {
   --space-gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
   --space-section: clamp(6rem, 4rem + 8vw, 10rem);
+  --header-height: 4rem;
 
   --gradient-mesh:
     radial-gradient(60rem 40rem at 85% -10%, oklch(0.87 0.062 262 / 0.55), transparent 65%),
@@ -150,6 +151,11 @@
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+  }
+
+  /* Anchored targets clear the sticky header. */
+  [id] {
+    scroll-margin-top: calc(var(--header-height) + 1.5rem);
   }
 
   body {
