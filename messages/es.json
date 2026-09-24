@@ -97,9 +97,6 @@
     "stackLabel": "Stack",
     "highlightsLabel": "Aspectos destacados"
   },
-  "education": {
-    "inProgress": "En curso"
-  },
   "contact": {
     "lead": "¿Tenés una posición o un proyecto en mente? Escribime y te respondo a la brevedad.",
     "emailLabel": "Email",
@@ -170,7 +167,7 @@
     },
     "education": {
       "uai": {
-        "title": "Ingeniería"
+        "title": "Ingeniería en Sistemas"
       },
       "coderhouse": {
         "title": "Inglés para Desarrolladores · nivel Advanced"

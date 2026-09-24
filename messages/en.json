@@ -97,9 +97,6 @@
     "stackLabel": "Stack",
     "highlightsLabel": "Highlights"
   },
-  "education": {
-    "inProgress": "In progress"
-  },
   "contact": {
     "lead": "Have a role or a project in mind? Write to me and I'll get back to you shortly.",
     "emailLabel": "Email",
@@ -170,7 +167,7 @@
     },
     "education": {
       "uai": {
-        "title": "Engineering"
+        "title": "Systems Engineering"
       },
       "coderhouse": {
         "title": "English for Developers · Advanced level"

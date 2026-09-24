@@ -17,11 +17,7 @@ export function Education() {
               <h3 className="text-lg font-semibold">{t(`content.education.${item.id}.title`)}</h3>
               <p className="text-muted">{item.institution}</p>
             </div>
-            {(item.inProgress || item.year) && (
-              <p className="font-mono text-sm text-muted sm:text-right">
-                {item.inProgress ? t("education.inProgress") : item.year}
-              </p>
-            )}
+            {item.year && <p className="font-mono text-sm text-muted sm:text-right">{item.year}</p>}
           </li>
         ))}
       </ul>
