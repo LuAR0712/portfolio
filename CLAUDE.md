@@ -47,10 +47,11 @@ src/
   components/layout/   Header, Footer, SkipLink, MobileNav, LanguageSwitcher, ThemeToggle, ThemeProvider, ScrollProgress
   components/motion/   client animation wrappers: MotionProvider, Reveal, Stagger, StaggerItem
   components/sections/ Hero, About, Experience, Projects, Skills, Education, Contact
+  features/now-playing/ Spotify client (server), NowPlaying widget, /api/now-playing is in app/api
   features/contact/    schema (shared), submit.ts (server logic, injectable deps), actions.ts (thin server action), rate-limit, email, form components, tests
-  content/             typed data: experience, projects, skills, education, profile
+  content/             typed data: experience, projects, skills, tech (catalog), clients, education, profile
   i18n/                routing.ts, request.ts, navigation.ts
-  lib/                 utils, dates (partial dates), motion.ts (animation variants), env.ts (validated env), constants
+  lib/                 utils, dates (partial dates), tech-icons (logo map), motion.ts (animation variants), env.ts (validated env), constants
   hooks/               custom hooks
   styles/              globals.css (tokens, base layers)
   test/                shared test helpers (renderWithIntl, expectNoAxeViolations)
@@ -90,10 +91,11 @@ public/cv/             luciano-rossi-cv-es.pdf, luciano-rossi-cv-en.pdf
 
 - **Palette as tokens only.** Scales `brand` (deep blue), `accent` (cyan, interactive/focus only) and `ink` (blue-tinted greys), 50–950. Semantic tokens (`--color-bg`, `--color-surface`, `--color-fg`, `--color-muted`, `--color-border`, `--color-primary`, `--color-primary-fg`, `--color-focus`, status `--color-danger` / `--color-warning` / `--color-success`) are redefined per theme under `[data-theme="dark"]`. Tailwind's default palette is disabled (`--color-*: initial`), so only token colors exist. No raw hex/rgb in components, no arbitrary Tailwind colors.
 - **Two themes designed separately**, not inverted: own gradients, shadows and contrast per theme. Dark mode backgrounds are subtle, never neon.
-- **Backgrounds**: CSS radial/mesh gradients + faint SVG noise grain. No background images.
+- **Backgrounds**: CSS radial/mesh gradients + faint SVG noise grain. No background images. A cursor spotlight (glow + dot grid revealed around the pointer) runs on fine pointers only and is off with reduced motion.
 - **Typography**: Bricolage Grotesque (headings, tight tracking) + Inter (body), via `next/font`. Max two families. Fluid scale with `clamp()`. Section titles carry real visual weight.
 - **Layout**: max content width ~72rem, 12-column grid, generous and regular vertical rhythm (`--space-section`). Don't fill the full width.
-- **Avoid template look**: no stacks of identical rounded cards, no colored tech-icon grids, no progress bars or star ratings for skills. Skills are typographic lists grouped by category.
+- **Avoid template look**: no stacks of identical rounded cards, no progress bars or star ratings for skills. Skills are typographic lists grouped by category; each name may carry a **monochrome** logo (`TechIcon`, Simple Icons, CC0) that takes its brand color on hover. Brand hex values come from Simple Icons data, the only non-token colors allowed, and near-black/near-white brands keep the text color. No colored icon grids.
+- **Client companies (YPF, banks) appear as plain typography**, never as brand logos: they were clients of my employer.
 - **Motion communicates hierarchy or state, never itself.** Content animations ≤600 ms, only `transform`/`opacity` (no CLS), no artificial loaders. Every animated component honors reduced motion: `<MotionConfig reducedMotion="user">` for motion components, `useReducedMotion` for scroll-linked effects, the `prefers-reduced-motion` block in `globals.css` for CSS. `src/lib/motion.test.ts` enforces the duration budget and transform/opacity-only variants.
 - **Accessibility is a requirement**: full keyboard navigation, visible high-contrast focus, semantic landmarks, WCAG AA contrast in both themes (enforced for semantic pairs by `src/styles/tokens.test.ts` — add new pairs there), responsive from 320px.
 - Performance target: Lighthouse ≥95 in all four categories on a production build. Measure before optimizing: run Lighthouse against `npm run build && npm run start`, mobile and desktop, several runs (localhost `simulate` throttling is noisy; compare with `--throttling-method=devtools`). The LCP element (hero title) must never start at `opacity: 0`.
