@@ -10,7 +10,7 @@ const linkClass =
 // Direct channels. The contact form is added to this section in the contact feature.
 export function Contact() {
   const t = useTranslations();
-  const linkedinDisplay = profile.linkedin.replace(/^https:\/\/(www\.)?/, "");
+  const linkedinDisplay = profile.linkedin.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "");
 
   return (
     <Section id="contact" title={t("sections.contact.title")}>

@@ -13,8 +13,7 @@ export type Profile = {
 export const profile: Profile = {
   name: "Luciano Rossi",
   email: "lrossi0798@gmail.com",
-  linkedin: "https://www.linkedin.com/in/luciano-rossi-98a38817b",
-  // TODO: add public/cv/luciano-rossi-cv-es.pdf and public/cv/luciano-rossi-cv-en.pdf
+  linkedin: "https://www.linkedin.com/in/luciano-a-rossi-98a38817b/",
   cv: {
     es: "/cv/luciano-rossi-cv-es.pdf",
     en: "/cv/luciano-rossi-cv-en.pdf",
