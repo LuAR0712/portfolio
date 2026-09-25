@@ -38,7 +38,8 @@
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
     "ctaCv": "Download CV",
-    "cvFormat": "(PDF)"
+    "cvFormat": "(PDF)",
+    "clientsLabel": "Built for"
   },
   "sections": {
     "about": {
