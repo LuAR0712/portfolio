@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Reveal } from "@/components/motion/Reveal";
 import { SECTION_IDS, type SectionId } from "@/lib/constants";
 import { Container } from "./Container";
 
@@ -17,14 +18,17 @@ export function Section({ id, title, children }: SectionProps) {
   return (
     <section id={id} aria-labelledby={titleId} className="py-section">
       <Container className="grid grid-cols-12 gap-x-6 gap-y-10">
-        <header className="col-span-12 flex items-baseline gap-4 border-t border-border pt-6 lg:col-span-4 lg:flex-col lg:gap-3">
+        <Reveal
+          as="header"
+          className="col-span-12 flex items-baseline gap-4 border-t border-border pt-6 lg:col-span-4 lg:flex-col lg:gap-3"
+        >
           <span aria-hidden="true" className="font-mono text-sm text-muted tabular-nums">
             {String(index).padStart(2, "0")}
           </span>
           <h2 id={titleId} className="text-h2">
             {title}
           </h2>
-        </header>
+        </Reveal>
         <div className="col-span-12 lg:col-span-8 lg:pt-6">{children}</div>
       </Container>
     </section>

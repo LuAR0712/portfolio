@@ -2,12 +2,15 @@ import { cn } from "@/lib/utils";
 
 export type ButtonVariant = "primary" | "secondary" | "ghost";
 
+// `group` lets icons inside react to hover. The lift is transform-only and skipped with reduced motion.
 const base =
-  "inline-flex h-12 items-center justify-center gap-2 rounded-md px-6 font-medium whitespace-nowrap transition-[background-color,border-color,color] duration-(--duration-fast)";
+  "group inline-flex h-12 items-center justify-center gap-2 rounded-md px-6 font-medium whitespace-nowrap transition-[background-color,border-color,color,text-decoration-color,translate,box-shadow] duration-(--duration-fast)";
+
+const lift = "motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0";
 
 const variants: Record<ButtonVariant, string> = {
-  primary: "bg-primary text-primary-fg hover:bg-primary/90",
-  secondary: "border border-border bg-surface/70 text-fg hover:border-fg/40",
+  primary: cn("bg-primary text-primary-fg shadow-soft hover:bg-primary/90 hover:shadow-lift", lift),
+  secondary: cn("border border-border bg-surface/70 text-fg hover:border-fg/40", lift),
   ghost: "px-2 text-fg underline decoration-border underline-offset-6 hover:decoration-fg",
 };
 

@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import { Stagger } from "@/components/motion/Stagger";
+import { StaggerItem } from "@/components/motion/StaggerItem";
 import { Section } from "@/components/ui/Section";
 import { education } from "@/content/education";
 
@@ -7,10 +9,11 @@ export function Education() {
 
   return (
     <Section id="education" title={t("sections.education.title")}>
-      <ul className="divide-y divide-border border-y border-border">
+      <Stagger as="ul" className="divide-y divide-border border-y border-border">
         {education.map((item) => (
-          <li
+          <StaggerItem
             key={item.id}
+            as="li"
             className="grid gap-1 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6"
           >
             <div>
@@ -18,9 +21,9 @@ export function Education() {
               <p className="text-muted">{item.institution}</p>
             </div>
             {item.year && <p className="font-mono text-sm text-muted sm:text-right">{item.year}</p>}
-          </li>
+          </StaggerItem>
         ))}
-      </ul>
+      </Stagger>
     </Section>
   );
 }

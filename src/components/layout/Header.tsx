@@ -28,7 +28,7 @@ export function Header() {
               <li key={id}>
                 <a
                   href={`#${id}`}
-                  className="text-sm text-muted transition-colors duration-(--duration-fast) hover:text-fg"
+                  className="relative text-sm text-muted transition-colors duration-(--duration-fast) after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-fg after:transition-transform after:duration-(--duration-base) after:ease-(--ease-out-expo) hover:text-fg hover:after:scale-x-100 focus-visible:after:scale-x-100"
                 >
                   {label}
                 </a>

@@ -1,4 +1,7 @@
 import { useTranslations } from "next-intl";
+import { Stagger } from "@/components/motion/Stagger";
+import { StaggerItem } from "@/components/motion/StaggerItem";
+import { Reveal } from "@/components/motion/Reveal";
 import { DateRangeText } from "@/components/ui/DateRangeText";
 import { Section } from "@/components/ui/Section";
 import { earlierExperience, experience } from "@/content/experience";
@@ -8,9 +11,9 @@ export function Experience() {
 
   return (
     <Section id="experience" title={t("sections.experience.title")}>
-      <ol className="relative space-y-12 border-l border-border pl-8">
+      <Stagger as="ol" className="relative space-y-12 border-l border-border pl-8">
         {experience.map((item) => (
-          <li key={item.id} className="relative">
+          <StaggerItem key={item.id} as="li" className="relative">
             {/* Timeline marker, centered on the rail. */}
             <span
               aria-hidden="true"
@@ -26,11 +29,11 @@ export function Experience() {
             <p className="mt-4 max-w-prose text-muted">
               {t(`content.experience.${item.id}.summary`)}
             </p>
-          </li>
+          </StaggerItem>
         ))}
-      </ol>
+      </Stagger>
 
-      <div className="mt-12 flex flex-col gap-1 pl-8 text-sm text-muted sm:flex-row sm:gap-3">
+      <Reveal className="mt-12 flex flex-col gap-1 pl-8 text-sm text-muted sm:flex-row sm:gap-3">
         <span className="font-mono tracking-wide uppercase">{t("experience.earlierLabel")}</span>
         <ul>
           {earlierExperience.map((item) => (
@@ -40,7 +43,7 @@ export function Experience() {
             </li>
           ))}
         </ul>
-      </div>
+      </Reveal>
     </Section>
   );
 }

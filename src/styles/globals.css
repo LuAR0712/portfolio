@@ -106,6 +106,23 @@
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   --duration-fast: 150ms;
   --duration-base: 250ms;
+
+  /*
+   * Hero entrance runs in CSS, not JS: it starts on first paint, before hydration, so the
+   * LCP element (the name) isn't held back waiting for JavaScript.
+   */
+  --animate-rise: rise 600ms var(--ease-out-expo) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 :root {
@@ -202,13 +219,21 @@
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
 }
 
-/* Page background: mesh gradient + faint SVG grain. Fixed layer, no images. */
+/* Theme switch: a short cross-fade via the View Transitions API (see ThemeToggle). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+  animation-timing-function: var(--ease-out-expo);
+}
+
+/* Page background: mesh gradient (fixed layer, see BackgroundMesh) + faint SVG grain. No images. */
 @utility bg-mesh {
   background-image: var(--gradient-mesh);
   background-color: var(--color-bg);

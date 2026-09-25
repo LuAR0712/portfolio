@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import { Stagger } from "@/components/motion/Stagger";
+import { StaggerItem } from "@/components/motion/StaggerItem";
 import { Section } from "@/components/ui/Section";
 import { skillCategories } from "@/content/skills";
 
@@ -8,9 +10,12 @@ export function Skills() {
 
   return (
     <Section id="skills" title={t("sections.skills.title")}>
-      <dl className="divide-y divide-border border-y border-border">
+      <Stagger as="dl" className="divide-y divide-border border-y border-border">
         {skillCategories.map((category) => (
-          <div key={category.id} className="grid gap-2 py-5 sm:grid-cols-[12rem_1fr] sm:gap-6">
+          <StaggerItem
+            key={category.id}
+            className="grid gap-2 py-5 sm:grid-cols-[12rem_1fr] sm:gap-6"
+          >
             <dt className="pt-1 font-mono text-xs tracking-wide text-muted uppercase">
               {t(`content.skills.categories.${category.id}`)}
             </dt>
@@ -28,9 +33,9 @@ export function Skills() {
                 ))}
               </ul>
             </dd>
-          </div>
+          </StaggerItem>
         ))}
-      </dl>
+      </Stagger>
     </Section>
   );
 }

@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import { Stagger } from "@/components/motion/Stagger";
+import { StaggerItem } from "@/components/motion/StaggerItem";
 import { Section } from "@/components/ui/Section";
 import { careerStart } from "@/content/experience";
 import { fullYearsSince } from "@/lib/dates";
@@ -18,22 +20,26 @@ export function About() {
 
   return (
     <Section id="about" title={t("sections.about.title")}>
-      <div className="space-y-6 text-lg">
+      <Stagger className="space-y-6 text-lg">
         {paragraphs.map((paragraph) => (
-          <p key={paragraph} className="max-w-prose first:text-fg [&:not(:first-child)]:text-muted">
+          <StaggerItem
+            key={paragraph}
+            as="p"
+            className="max-w-prose first:text-fg [&:not(:first-child)]:text-muted"
+          >
             {paragraph}
-          </p>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
 
-      <dl className="mt-14 grid gap-8 border-t border-border pt-8 sm:grid-cols-3">
+      <Stagger as="dl" className="mt-14 grid gap-8 border-t border-border pt-8 sm:grid-cols-3">
         {facts.map(([label, value]) => (
-          <div key={label} className="space-y-1">
+          <StaggerItem key={label} className="space-y-1">
             <dt className="font-mono text-xs tracking-wide text-muted uppercase">{label}</dt>
             <dd className="font-display text-h3 font-semibold">{value}</dd>
-          </div>
+          </StaggerItem>
         ))}
-      </dl>
+      </Stagger>
     </Section>
   );
 }
