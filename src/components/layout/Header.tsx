@@ -13,11 +13,11 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-bg/80 backdrop-blur-md">
-      <Container className="flex h-(--header-height) items-center justify-between gap-6">
+      <Container className="flex h-(--header-height) items-center justify-between gap-3 sm:gap-6">
         <Link
           href="/"
           aria-label={t("header.homeLabel", { name: profile.name })}
-          className="font-display text-lg font-bold tracking-tight"
+          className="font-display text-base font-bold tracking-tight whitespace-nowrap sm:text-lg"
         >
           {profile.name}
         </Link>
