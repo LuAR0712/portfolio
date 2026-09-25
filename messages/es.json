@@ -101,7 +101,49 @@
     "lead": "¿Tenés una posición o un proyecto en mente? Escribime y te respondo a la brevedad.",
     "emailLabel": "Email",
     "linkedinLabel": "LinkedIn",
-    "newTab": "(se abre en una pestaña nueva)"
+    "newTab": "(se abre en una pestaña nueva)",
+    "form": {
+      "label": "Formulario de contacto",
+      "requiredNote": "Todos los campos son obligatorios salvo que se indique lo contrario.",
+      "optional": "opcional",
+      "fields": {
+        "name": "Nombre",
+        "email": "Email",
+        "company": "Empresa",
+        "subject": "Asunto",
+        "message": "Mensaje"
+      },
+      "counter": "{count} / {max}",
+      "counterLimit": "Entre {min} y {max} caracteres.",
+      "honeypot": "No completes este campo",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando…",
+      "validating": "Revisando…",
+      "success": {
+        "title": "¡Mensaje enviado!",
+        "body": "Gracias por escribir. Te respondo a la brevedad al email que dejaste.",
+        "again": "Enviar otro mensaje"
+      },
+      "errors": {
+        "required": "Este campo es obligatorio.",
+        "nameTooShort": "El nombre debe tener al menos {min} caracteres.",
+        "nameTooLong": "El nombre puede tener hasta {max} caracteres.",
+        "nameInvalid": "Usá solo letras, espacios, apóstrofos y guiones.",
+        "emailInvalid": "Ingresá un email válido, por ejemplo nombre@dominio.com.",
+        "emailTooLong": "El email puede tener hasta {max} caracteres.",
+        "companyTooLong": "La empresa puede tener hasta {max} caracteres.",
+        "subjectTooShort": "El asunto debe tener al menos {min} caracteres.",
+        "subjectTooLong": "El asunto puede tener hasta {max} caracteres.",
+        "messageTooShort": "El mensaje debe tener al menos {min} caracteres.",
+        "messageTooLong": "El mensaje puede tener hasta {max} caracteres."
+      },
+      "status": {
+        "invalid": "Revisá los campos marcados.",
+        "rateLimited": "Enviaste varios mensajes seguidos. Esperá unos minutos y probá de nuevo.",
+        "unavailable": "No pude enviar el mensaje. Probá de nuevo más tarde o escribime a {email}."
+      }
+    },
+    "directLabel": "¿Preferís escribir directo?"
   },
   "content": {
     "experience": {

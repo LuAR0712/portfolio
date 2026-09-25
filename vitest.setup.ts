@@ -1,4 +1,8 @@
 import "@testing-library/jest-dom/vitest";
+import { MotionGlobalConfig } from "motion/react";
+
+// Tests assert on states, not on animation frames: finish every motion animation instantly.
+MotionGlobalConfig.skipAnimations = true;
 
 // jsdom has no matchMedia; next-themes and responsive components need it. Defaults to "no match"
 // (light color scheme, mobile viewport).

@@ -10,6 +10,9 @@ import { Hero } from "./Hero";
 import { Projects } from "./Projects";
 import { Skills } from "./Skills";
 
+// The contact form imports a server action; these tests only render the page.
+vi.mock("@/features/contact/actions", () => ({ sendContactMessage: vi.fn() }));
+
 function renderPage(locale: Locale = "es") {
   return renderWithIntl(
     <main>

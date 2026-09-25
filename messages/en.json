@@ -101,7 +101,49 @@
     "lead": "Have a role or a project in mind? Write to me and I'll get back to you shortly.",
     "emailLabel": "Email",
     "linkedinLabel": "LinkedIn",
-    "newTab": "(opens in a new tab)"
+    "newTab": "(opens in a new tab)",
+    "form": {
+      "label": "Contact form",
+      "requiredNote": "All fields are required unless marked otherwise.",
+      "optional": "optional",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "company": "Company",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "counter": "{count} / {max}",
+      "counterLimit": "Between {min} and {max} characters.",
+      "honeypot": "Don't fill in this field",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "validating": "Checking…",
+      "success": {
+        "title": "Message sent!",
+        "body": "Thanks for reaching out. I'll get back to you shortly at the email you provided.",
+        "again": "Send another message"
+      },
+      "errors": {
+        "required": "This field is required.",
+        "nameTooShort": "Name must be at least {min} characters.",
+        "nameTooLong": "Name can be up to {max} characters.",
+        "nameInvalid": "Use only letters, spaces, apostrophes and hyphens.",
+        "emailInvalid": "Enter a valid email, for example name@domain.com.",
+        "emailTooLong": "Email can be up to {max} characters.",
+        "companyTooLong": "Company can be up to {max} characters.",
+        "subjectTooShort": "Subject must be at least {min} characters.",
+        "subjectTooLong": "Subject can be up to {max} characters.",
+        "messageTooShort": "Message must be at least {min} characters.",
+        "messageTooLong": "Message can be up to {max} characters."
+      },
+      "status": {
+        "invalid": "Please check the highlighted fields.",
+        "rateLimited": "You've sent several messages in a row. Please wait a few minutes and try again.",
+        "unavailable": "I couldn't send your message. Please try again later or email me at {email}."
+      }
+    },
+    "directLabel": "Prefer to write directly?"
   },
   "content": {
     "experience": {
