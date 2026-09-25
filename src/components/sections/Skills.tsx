@@ -2,9 +2,11 @@ import { useTranslations } from "next-intl";
 import { Stagger } from "@/components/motion/Stagger";
 import { StaggerItem } from "@/components/motion/StaggerItem";
 import { Section } from "@/components/ui/Section";
+import { TechIcon } from "@/components/ui/TechIcon";
 import { skillCategories } from "@/content/skills";
 
-// Typographic list grouped by category: no levels, icons or charts.
+// Typographic list grouped by category: no levels or charts. Logos are monochrome and sit beside
+// the name; they take their brand color on hover.
 export function Skills() {
   const t = useTranslations();
 
@@ -20,9 +22,13 @@ export function Skills() {
               {t(`content.skills.categories.${category.id}`)}
             </dt>
             <dd>
-              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              <ul className="flex flex-wrap gap-x-6 gap-y-3">
                 {category.skills.map((skill) => (
-                  <li key={skill.name} className="font-display text-lg font-semibold">
+                  <li
+                    key={skill.name}
+                    className="group inline-flex items-center gap-2 font-display text-lg font-semibold"
+                  >
+                    {skill.icon && <TechIcon id={skill.icon} className="text-muted" />}
                     {skill.name}
                     {skill.note && (
                       <span className="ml-1.5 font-sans text-sm font-normal text-muted">

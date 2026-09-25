@@ -3,6 +3,7 @@ import { Stagger } from "@/components/motion/Stagger";
 import { StaggerItem } from "@/components/motion/StaggerItem";
 import { DateRangeText } from "@/components/ui/DateRangeText";
 import { Section } from "@/components/ui/Section";
+import { TechIcon } from "@/components/ui/TechIcon";
 import { projects } from "@/content/projects";
 
 // Editorial list rather than a card grid: each project is a row separated by a rule,
@@ -64,15 +65,11 @@ export function Projects() {
                     {t("projects.stackLabel")}
                   </dt>
                   <dd>
-                    <ul className="flex flex-wrap gap-x-2">
-                      {project.stack.map((tech, i) => (
-                        <li key={tech}>
-                          {tech}
-                          {i < project.stack.length - 1 && (
-                            <span aria-hidden="true" className="ml-2 text-muted">
-                              /
-                            </span>
-                          )}
+                    <ul className="flex flex-wrap gap-x-4 gap-y-2">
+                      {project.stack.map((item) => (
+                        <li key={item.name} className="group inline-flex items-center gap-1.5">
+                          {item.icon && <TechIcon id={item.icon} className="size-4 text-muted" />}
+                          {item.name}
                         </li>
                       ))}
                     </ul>
