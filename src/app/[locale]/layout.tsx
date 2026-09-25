@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { BackgroundMesh } from "@/components/layout/BackgroundMesh";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 import { routing } from "@/i18n/routing";
 import { MAIN_CONTENT_ID } from "@/lib/constants";
 import { publicEnv } from "@/lib/env";
@@ -46,13 +49,21 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       // next-themes sets data-theme on <html> before hydration.
       suppressHydrationWarning
     >
-      <body id="top" className="bg-grain bg-mesh">
+      <body id="top" className="bg-grain">
+        {/* Without JavaScript, scroll reveals never run: show their content as-is. */}
+        <noscript>
+          <style>{"[data-reveal]{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
         <NextIntlClientProvider>
           <ThemeProvider>
-            <SkipLink />
-            <Header />
-            <main id={MAIN_CONTENT_ID}>{children}</main>
-            <Footer />
+            <MotionProvider>
+              <BackgroundMesh />
+              <ScrollProgress />
+              <SkipLink />
+              <Header />
+              <main id={MAIN_CONTENT_ID}>{children}</main>
+              <Footer />
+            </MotionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
