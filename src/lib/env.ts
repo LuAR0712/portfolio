@@ -24,11 +24,25 @@ const serverSchema = z
     CONTACT_FROM_EMAIL: optionalString,
     UPSTASH_REDIS_REST_URL: z.url().optional(),
     UPSTASH_REDIS_REST_TOKEN: optionalString,
+    SPOTIFY_CLIENT_ID: optionalString,
+    SPOTIFY_CLIENT_SECRET: optionalString,
+    SPOTIFY_REFRESH_TOKEN: optionalString,
   })
   .refine((env) => Boolean(env.UPSTASH_REDIS_REST_URL) === Boolean(env.UPSTASH_REDIS_REST_TOKEN), {
     message: "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set together",
     path: ["UPSTASH_REDIS_REST_TOKEN"],
-  });
+  })
+  .refine(
+    (env) =>
+      new Set(
+        [env.SPOTIFY_CLIENT_ID, env.SPOTIFY_CLIENT_SECRET, env.SPOTIFY_REFRESH_TOKEN].map(Boolean),
+      ).size === 1,
+    {
+      message:
+        "SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET and SPOTIFY_REFRESH_TOKEN must be set together",
+      path: ["SPOTIFY_REFRESH_TOKEN"],
+    },
+  );
 
 export type PublicEnv = z.infer<typeof publicSchema>;
 export type ServerEnv = z.infer<typeof serverSchema>;

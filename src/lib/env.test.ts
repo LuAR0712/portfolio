@@ -31,4 +31,15 @@ describe("parseServerEnv", () => {
       /must be set together/,
     );
   });
+
+  it("requires the three Spotify credentials together", () => {
+    expect(() => parseServerEnv({ SPOTIFY_CLIENT_ID: "id" })).toThrow(/must be set together/);
+    expect(
+      parseServerEnv({
+        SPOTIFY_CLIENT_ID: "id",
+        SPOTIFY_CLIENT_SECRET: "s",
+        SPOTIFY_REFRESH_TOKEN: "r",
+      }).SPOTIFY_REFRESH_TOKEN,
+    ).toBe("r");
+  });
 });

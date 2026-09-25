@@ -131,6 +131,18 @@
     }
   }
 
+  /* Equalizer bars for "now playing" (state indicator, looped; static with reduced motion). */
+  --animate-eq: eq 900ms ease-in-out infinite alternate;
+
+  @keyframes eq {
+    from {
+      transform: scaleY(0.3);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
   @keyframes rise-solid {
     from {
       transform: translateY(1.25rem);

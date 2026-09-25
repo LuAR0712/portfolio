@@ -225,5 +225,11 @@
   },
   "dates": {
     "present": "actualidad"
+  },
+  "nowPlaying": {
+    "playing": "Escuchando ahora",
+    "recent": "Lo último que escuché",
+    "byArtist": "de {artists}",
+    "newTab": "(abre Spotify en una pestaña nueva)"
   }
 }

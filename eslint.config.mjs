@@ -38,7 +38,8 @@ export default defineConfig([
     },
   },
   {
-    files: ["src/lib/env.ts", "*.config.{ts,mjs}"],
+    // Build/config files and one-off scripts run outside the app, where env.ts does not apply.
+    files: ["src/lib/env.ts", "*.config.{ts,mjs}", "scripts/**"],
     rules: { "no-restricted-properties": "off" },
   },
   globalIgnores([".next/**", "out/**", "build/**", "coverage/**", "next-env.d.ts"]),
