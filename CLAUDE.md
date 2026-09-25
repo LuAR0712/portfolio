@@ -47,7 +47,7 @@ src/
   components/layout/   Header, Footer, SkipLink, MobileNav, LanguageSwitcher, ThemeToggle, ThemeProvider, ScrollProgress
   components/motion/   client animation wrappers: MotionProvider, Reveal, Stagger, StaggerItem
   components/sections/ Hero, About, Experience, Projects, Skills, Education, Contact
-  features/contact/    schema, server action, form components, tests (self-contained feature)
+  features/contact/    schema (shared), submit.ts (server logic, injectable deps), actions.ts (thin server action), rate-limit, email, form components, tests
   content/             typed data: experience, projects, skills, education, profile
   i18n/                routing.ts, request.ts, navigation.ts
   lib/                 utils, dates (partial dates), motion.ts (animation variants), env.ts (validated env), constants
@@ -86,7 +86,7 @@ public/cv/             luciano-rossi-cv-es.pdf, luciano-rossi-cv-en.pdf
 
 ## Design criteria
 
-- **Palette as tokens only.** Scales `brand` (deep blue), `accent` (cyan, interactive/focus only) and `ink` (blue-tinted greys), 50–950. Semantic tokens (`--color-bg`, `--color-surface`, `--color-fg`, `--color-muted`, `--color-border`, `--color-primary`, `--color-primary-fg`, `--color-focus`) are redefined per theme under `[data-theme="dark"]`. Tailwind's default palette is disabled (`--color-*: initial`), so only token colors exist. No raw hex/rgb in components, no arbitrary Tailwind colors.
+- **Palette as tokens only.** Scales `brand` (deep blue), `accent` (cyan, interactive/focus only) and `ink` (blue-tinted greys), 50–950. Semantic tokens (`--color-bg`, `--color-surface`, `--color-fg`, `--color-muted`, `--color-border`, `--color-primary`, `--color-primary-fg`, `--color-focus`, status `--color-danger` / `--color-warning` / `--color-success`) are redefined per theme under `[data-theme="dark"]`. Tailwind's default palette is disabled (`--color-*: initial`), so only token colors exist. No raw hex/rgb in components, no arbitrary Tailwind colors.
 - **Two themes designed separately**, not inverted: own gradients, shadows and contrast per theme. Dark mode backgrounds are subtle, never neon.
 - **Backgrounds**: CSS radial/mesh gradients + faint SVG noise grain. No background images.
 - **Typography**: Bricolage Grotesque (headings, tight tracking) + Inter (body), via `next/font`. Max two families. Fluid scale with `clamp()`. Section titles carry real visual weight.
