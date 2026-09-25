@@ -14,7 +14,7 @@ export function Hero() {
     <section aria-labelledby="hero-title">
       <Container className="flex min-h-[calc(100svh-var(--header-height))] flex-col justify-center gap-8 py-section">
         <div className="space-y-5">
-          <h1 id="hero-title" className="animate-rise text-display" style={heroStep(0)}>
+          <h1 id="hero-title" className="animate-rise-solid text-display" style={heroStep(0)}>
             {profile.name}
           </h1>
           <p

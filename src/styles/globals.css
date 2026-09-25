@@ -116,6 +116,9 @@
    * LCP element (the name) isn't held back waiting for JavaScript.
    */
   --animate-rise: rise 600ms var(--ease-out-expo) both;
+  /* For the LCP element: movement only. Chrome skips opacity:0 elements as LCP candidates, so a
+     fade would push LCP to whenever the fade ends. */
+  --animate-rise-solid: rise-solid 600ms var(--ease-out-expo) both;
 
   @keyframes rise {
     from {
@@ -124,6 +127,15 @@
     }
     to {
       opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes rise-solid {
+    from {
+      transform: translateY(1.25rem);
+    }
+    to {
       transform: none;
     }
   }
@@ -250,9 +262,10 @@
   position: relative;
   isolation: isolate;
 
+  /* Fixed to the viewport: the noise filter is rasterized for one screen, not the whole page. */
   &::after {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
