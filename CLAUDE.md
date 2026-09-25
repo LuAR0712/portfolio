@@ -45,6 +45,7 @@ src/
   app/                 sitemap.ts, robots.ts
   components/ui/       primitives: Container, Section, ButtonLink (+ button-styles), Icon, DateRangeText
   components/layout/   Header, Footer, SkipLink, MobileNav, LanguageSwitcher, ThemeToggle, ThemeProvider, ScrollProgress
+  components/motion/   client animation wrappers: MotionProvider, Reveal, Stagger, StaggerItem
   components/sections/ Hero, About, Experience, Projects, Skills, Education, Contact
   features/contact/    schema, server action, form components, tests (self-contained feature)
   content/             typed data: experience, projects, skills, education, profile
@@ -66,7 +67,7 @@ public/cv/             luciano-rossi-cv-es.pdf, luciano-rossi-cv-en.pdf
 2. **No visible hardcoded strings in components.** Every user-facing string (including `aria-label`, `alt`, error messages) comes from `messages/*.json`. A hardcoded string is a bug.
 3. `es.json` and `en.json` must always have identical key sets (enforced by a test).
 4. **Server Components by default.** `"use client"` only for animation wrappers, toggles and the contact form. Keep client islands small and push them to the leaves.
-5. **Animation variants live in `src/lib/motion.ts`.** Sections import variants; they don't define their own.
+5. **Animation variants live in `src/lib/motion.ts`.** Sections use the wrappers in `components/motion/` (server sections stay server components); they don't define their own variants. Exception: the hero entrance is a CSS keyframe (`animate-rise` + `heroStep()`) so it runs before hydration and doesn't delay LCP.
 6. Environment variables are read only through `src/lib/env.ts` (zod-validated). Never `process.env.X` elsewhere.
 7. The contact zod schema is shared between client and server. The server never trusts the client.
 8. Missing real data → leave a visible `TODO:` comment in the content file. Never invent data.
@@ -91,7 +92,7 @@ public/cv/             luciano-rossi-cv-es.pdf, luciano-rossi-cv-en.pdf
 - **Typography**: Bricolage Grotesque (headings, tight tracking) + Inter (body), via `next/font`. Max two families. Fluid scale with `clamp()`. Section titles carry real visual weight.
 - **Layout**: max content width ~72rem, 12-column grid, generous and regular vertical rhythm (`--space-section`). Don't fill the full width.
 - **Avoid template look**: no stacks of identical rounded cards, no colored tech-icon grids, no progress bars or star ratings for skills. Skills are typographic lists grouped by category.
-- **Motion communicates hierarchy or state, never itself.** Content animations ≤600 ms, only `transform`/`opacity` (no CLS), no artificial loaders. Every animated component honors `useReducedMotion`.
+- **Motion communicates hierarchy or state, never itself.** Content animations ≤600 ms, only `transform`/`opacity` (no CLS), no artificial loaders. Every animated component honors reduced motion: `<MotionConfig reducedMotion="user">` for motion components, `useReducedMotion` for scroll-linked effects, the `prefers-reduced-motion` block in `globals.css` for CSS. `src/lib/motion.test.ts` enforces the duration budget and transform/opacity-only variants.
 - **Accessibility is a requirement**: full keyboard navigation, visible high-contrast focus, semantic landmarks, WCAG AA contrast in both themes (enforced for semantic pairs by `src/styles/tokens.test.ts` — add new pairs there), responsive from 320px.
 - Performance target: Lighthouse ≥95 in all four categories on a production build.
 
