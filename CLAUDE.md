@@ -69,10 +69,12 @@ public/cv/             luciano-rossi-cv-es.pdf, luciano-rossi-cv-en.pdf
 4. **Server Components by default.** `"use client"` only for animation wrappers, toggles and the contact form. Keep client islands small and push them to the leaves.
 5. **Animation variants live in `src/lib/motion.ts`.** Sections use the wrappers in `components/motion/` (server sections stay server components); they don't define their own variants. Exception: the hero entrance is a CSS keyframe (`animate-rise` + `heroStep()`) so it runs before hydration and doesn't delay LCP.
 6. Environment variables are read only through `src/lib/env.ts` (zod-validated). Never `process.env.X` elsewhere.
-7. The contact zod schema is shared between client and server. The server never trusts the client.
+7. The contact zod schema is shared between client and server. The server never trusts the client. It uses `zod/mini` because it ships to the browser; server-only schemas (`env.ts`) use classic `zod`.
 8. Missing real data → leave a visible `TODO:` comment in the content file. Never invent data.
 9. Never publish the phone number anywhere in the site. It only goes in the PDF CV.
 10. Client projects (YPF, banks) are described by technical challenge and role only: no screenshots, no business data, no brand logos.
+11. Only the message namespaces listed in `src/i18n/client-messages.ts` reach the browser. A client component that reads a new namespace must add it there (a test enforces it).
+12. Structured data (JSON-LD) is built from `src/content` in `src/lib/structured-data.ts`, never hand-written in pages.
 
 ## Naming conventions
 
@@ -94,7 +96,7 @@ public/cv/             luciano-rossi-cv-es.pdf, luciano-rossi-cv-en.pdf
 - **Avoid template look**: no stacks of identical rounded cards, no colored tech-icon grids, no progress bars or star ratings for skills. Skills are typographic lists grouped by category.
 - **Motion communicates hierarchy or state, never itself.** Content animations ≤600 ms, only `transform`/`opacity` (no CLS), no artificial loaders. Every animated component honors reduced motion: `<MotionConfig reducedMotion="user">` for motion components, `useReducedMotion` for scroll-linked effects, the `prefers-reduced-motion` block in `globals.css` for CSS. `src/lib/motion.test.ts` enforces the duration budget and transform/opacity-only variants.
 - **Accessibility is a requirement**: full keyboard navigation, visible high-contrast focus, semantic landmarks, WCAG AA contrast in both themes (enforced for semantic pairs by `src/styles/tokens.test.ts` — add new pairs there), responsive from 320px.
-- Performance target: Lighthouse ≥95 in all four categories on a production build.
+- Performance target: Lighthouse ≥95 in all four categories on a production build. Measure before optimizing: run Lighthouse against `npm run build && npm run start`, mobile and desktop, several runs (localhost `simulate` throttling is noisy; compare with `--throttling-method=devtools`). The LCP element (hero title) must never start at `opacity: 0`.
 
 ## Git
 
