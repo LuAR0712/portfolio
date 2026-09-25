@@ -77,7 +77,7 @@
   "about": {
     "paragraphs": [
       "Hace más de cuatro años que construyo aplicaciones empresariales para los sectores energético y financiero.",
-      "Hoy soy el único responsable del frontend de un producto de la célula Mobile de YPF: desde la arquitectura y el sistema de componentes hasta la implementación y el mantenimiento.",
+      "En los equipos por los que pasé suelo moverme entre el diseño y el código: armo sistemas de componentes, llevo los diseños a interfaces concretas y, cuando hace falta, me sumo a tareas de UX o de backend en .NET.",
       "Tengo experiencia modernizando aplicaciones legacy hacia stacks actuales de React y TypeScript, y trabajando de forma coordinada con equipos de backend, UX y negocio."
     ],
     "facts": {
@@ -119,10 +119,10 @@
       "nexplan": {
         "title": "NexPlan",
         "context": "YPF · célula Mobile",
-        "role": "Único desarrollador frontend",
+        "role": "Desarrollador frontend",
         "summary": "Producto desarrollado desde cero para la célula Mobile de YPF.",
         "highlights": [
-          "Arquitectura frontend definida junto a un desarrollador senior; hoy soy el único frontend del proyecto.",
+          "Arquitectura frontend definida junto a un desarrollador senior; hoy llevo adelante el frontend del proyecto.",
           "Librería de componentes construida desde cero con styled-components a partir de los diseños de UX, pensada como plantilla base para los próximos desarrollos de la compañía.",
           "Incorporación progresiva de tareas de backend en .NET: resolución de bugs y desarrollo de endpoints."
         ]

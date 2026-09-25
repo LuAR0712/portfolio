@@ -77,7 +77,7 @@
   "about": {
     "paragraphs": [
       "For over four years I've been building enterprise applications for the energy and financial sectors.",
-      "Today I'm the sole frontend owner of a product in YPF's Mobile unit: from architecture and the component system to implementation and maintenance.",
+      "In the teams I have been part of, I tend to sit between design and code: I build component systems, turn designs into working interfaces and, when needed, pitch in on UX or .NET backend work.",
       "I have experience modernizing legacy applications into current React and TypeScript stacks, working closely with backend, UX and business teams."
     ],
     "facts": {
@@ -119,10 +119,10 @@
       "nexplan": {
         "title": "NexPlan",
         "context": "YPF · Mobile unit",
-        "role": "Sole frontend developer",
+        "role": "Frontend developer",
         "summary": "A product built from scratch for YPF's Mobile unit.",
         "highlights": [
-          "Frontend architecture defined together with a senior developer; today I'm the only frontend developer on the project.",
+          "Frontend architecture defined together with a senior developer; today I lead the frontend work on the project.",
           "Component library built from scratch with styled-components from the UX designs, intended as the base template for the company's upcoming products.",
           "Gradually taking on .NET backend work: bug fixing and endpoint development."
         ]
