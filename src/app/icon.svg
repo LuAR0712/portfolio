@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Colors mirror brand-950 / brand-600 / accent-400 from globals.css (hex for icon compatibility). -->
+  <rect width="64" height="64" rx="14" fill="#080f32"/>
+  <path d="M18 18v28h14" fill="none" stroke="#f0f5ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36 46V18h6a8 8 0 0 1 0 16h-6m6 0 6 12" fill="none" stroke="#f0f5ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="50" cy="50" r="3" fill="#00d1ee"/>
+</svg>

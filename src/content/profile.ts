@@ -5,6 +5,8 @@ import type { Locale } from "@/i18n/routing";
 
 export type Profile = {
   name: string;
+  givenName: string;
+  familyName: string;
   email: string;
   linkedin: string;
   cv: Record<Locale, string>;
@@ -12,6 +14,8 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "Luciano Rossi",
+  givenName: "Luciano",
+  familyName: "Rossi",
   email: "lrossi0798@gmail.com",
   linkedin: "https://www.linkedin.com/in/luciano-a-rossi-98a38817b/",
   cv: {
