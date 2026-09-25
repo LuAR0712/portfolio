@@ -39,7 +39,8 @@
     "ctaContact": "Contactame",
     "ctaCv": "Descargar CV",
     "cvFormat": "(PDF)",
-    "clientsLabel": "Proyectos para"
+    "clientsLabel": "Proyectos para",
+    "photoAlt": "Foto de Luciano Rossi"
   },
   "sections": {
     "about": {

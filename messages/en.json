@@ -39,7 +39,8 @@
     "ctaContact": "Get in touch",
     "ctaCv": "Download CV",
     "cvFormat": "(PDF)",
-    "clientsLabel": "Built for"
+    "clientsLabel": "Built for",
+    "photoAlt": "Photo of Luciano Rossi"
   },
   "sections": {
     "about": {
