@@ -14,9 +14,19 @@ function renderToggle(locale: "es" | "en" = "es") {
   );
 }
 
+function mockReducedMotion(reduce: boolean) {
+  const original = window.matchMedia;
+  vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
+    ...original(query),
+    matches: reduce && query.includes("prefers-reduced-motion"),
+  }));
+}
+
 afterEach(() => {
   localStorage.clear();
   document.documentElement.removeAttribute("data-theme");
+  Reflect.deleteProperty(document, "startViewTransition");
+  vi.restoreAllMocks();
 });
 
 describe("ThemeToggle", () => {
@@ -37,6 +47,31 @@ describe("ThemeToggle", () => {
     await user.click(screen.getByRole("button"));
 
     expect(localStorage.getItem("theme")).toBe("dark");
+  });
+
+  it("cross-fades through a view transition when the browser supports it", async () => {
+    const user = userEvent.setup();
+    const startViewTransition = vi.fn((update: () => void) => update());
+    Object.assign(document, { startViewTransition });
+    renderToggle();
+
+    await user.click(screen.getByRole("button"));
+
+    expect(startViewTransition).toHaveBeenCalledOnce();
+    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
+  });
+
+  it("switches instantly when reduced motion is requested", async () => {
+    const user = userEvent.setup();
+    const startViewTransition = vi.fn((update: () => void) => update());
+    Object.assign(document, { startViewTransition });
+    mockReducedMotion(true);
+    renderToggle();
+
+    await user.click(screen.getByRole("button"));
+
+    expect(startViewTransition).not.toHaveBeenCalled();
+    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
   });
 
   it("is labelled in the active locale", () => {
