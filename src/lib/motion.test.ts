@@ -1,12 +1,20 @@
 // @vitest-environment node
 import type { Variants } from "motion/react";
-import { DURATION, fadeUp, heroStep, staggerContainer, staggerItem } from "./motion";
+import {
+  DURATION,
+  fadeUp,
+  fieldError,
+  heroStep,
+  staggerContainer,
+  staggerItem,
+  statusSwap,
+} from "./motion";
 
 // Guards the motion rules in CLAUDE.md: content animations ≤600 ms, transform/opacity only.
 const MAX_SECONDS = 0.6;
 const ALLOWED_PROPS = new Set(["opacity", "x", "y", "scale", "transition"]);
 
-const contentVariants: Record<string, Variants> = { fadeUp, staggerItem };
+const contentVariants: Record<string, Variants> = { fadeUp, staggerItem, fieldError, statusSwap };
 
 describe("motion variants", () => {
   it("keep every duration within the 600 ms budget", () => {

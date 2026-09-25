@@ -35,6 +35,20 @@ export const staggerItem: Variants = {
   visible: { opacity: 1, y: 0, transition: reveal },
 };
 
+// Inline field error: a short drop-in so the message reads as attached to its field.
+export const fieldError: Variants = {
+  hidden: { opacity: 0, y: -4 },
+  visible: { opacity: 1, y: 0, transition: { duration: DURATION.fast, ease: EASE_OUT_EXPO } },
+  exit: { opacity: 0, transition: { duration: DURATION.fast } },
+};
+
+// Swapping whole form states (form ↔ success, status banners).
+export const statusSwap: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: DURATION.base, ease: EASE_OUT_EXPO } },
+  exit: { opacity: 0, y: -8, transition: { duration: DURATION.fast } },
+};
+
 // Trigger once, slightly before the element is fully in view.
 export const inViewOptions = { once: true, amount: 0.15, margin: "0px 0px -8% 0px" } as const;
 
