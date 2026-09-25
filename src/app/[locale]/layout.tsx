@@ -64,7 +64,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
               <ScrollProgress />
               <SkipLink />
               <Header />
-              <main id={MAIN_CONTENT_ID}>{children}</main>
+              {/* Focusable so the skip link moves focus (and screen readers) into the content. */}
+              <main id={MAIN_CONTENT_ID} tabIndex={-1} className="outline-none">
+                {children}
+              </main>
               <Footer />
             </MotionProvider>
           </ThemeProvider>
