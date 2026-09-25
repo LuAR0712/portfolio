@@ -61,6 +61,10 @@
   --color-primary: var(--color-brand-600);
   --color-primary-fg: var(--color-brand-50);
   --color-focus: var(--color-accent-700);
+  /* Status (form feedback). Not full scales: only the text-safe tone each theme needs. */
+  --color-danger: oklch(0.52 0.19 27);
+  --color-warning: oklch(0.53 0.12 62);
+  --color-success: oklch(0.5 0.12 155);
 
   /* Typography — fluid between 320px and 1280px viewports */
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
@@ -148,6 +152,9 @@
   --color-primary: var(--color-brand-300);
   --color-primary-fg: var(--color-brand-950);
   --color-focus: var(--color-accent-400);
+  --color-danger: oklch(0.72 0.16 25);
+  --color-warning: oklch(0.8 0.13 78);
+  --color-success: oklch(0.78 0.13 155);
 
   /* Dark: shadows go deeper and tighter; light doesn't travel far on a dark surface. */
   --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.4), 0 4px 16px -4px oklch(0 0 0 / 0.35);

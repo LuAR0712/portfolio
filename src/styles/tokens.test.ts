@@ -68,6 +68,12 @@ const pairs: [fg: string, bg: string, min: number][] = [
   ["--color-primary", "--color-bg", TEXT],
   ["--color-primary", "--color-surface", TEXT],
   ["--color-primary-fg", "--color-primary", TEXT],
+  ["--color-danger", "--color-bg", TEXT],
+  ["--color-danger", "--color-surface", TEXT],
+  ["--color-warning", "--color-bg", TEXT],
+  ["--color-warning", "--color-surface", TEXT],
+  ["--color-success", "--color-bg", TEXT],
+  ["--color-success", "--color-surface", TEXT],
   ["--color-focus", "--color-bg", NON_TEXT],
   ["--color-focus", "--color-surface", NON_TEXT],
 ];
