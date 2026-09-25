@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod/mini";
 
 /*
  * Contact form schema, shared by the client (instant feedback) and the server action (the source
@@ -7,6 +7,9 @@ import { z } from "zod";
  * Every value is normalized before it's validated: Unicode NFC, whitespace collapsed and trimmed
  * (the message keeps its line breaks). Errors are codes, not sentences; each side translates them
  * through messages → contact.form.errors.<code>.
+ *
+ * Built with `zod/mini` (tree-shakable functional API): this schema ships to the browser with the
+ * form, and the classic API would add tens of KB to the page for the same rules.
  */
 
 export const LIMITS = {
@@ -54,43 +57,47 @@ export function normalizeMultiline(value: string): string {
 // "María José", "O'Brien", "Jean-Luc". No digits, no leading/trailing punctuation.
 const NAME_PATTERN = /^\p{L}[\p{L}\p{M}]*(?:(?: |['’-])\p{L}[\p{L}\p{M}]*)*$/u;
 
-const text = (normalize: (value: string) => string) =>
-  z.string({ error: "required" satisfies ContactErrorCode }).overwrite(normalize);
+// A failing rule stops the chain (`abort`), so each field reports its first problem only.
+const rule = (check: (value: string) => boolean, error: ContactErrorCode) =>
+  z.refine<string>(check, { error, abort: true });
 
-const between = (min: number, max: number, tooShort: ContactErrorCode, tooLong: ContactErrorCode) =>
-  text(normalizeLine)
-    .refine((v) => v.length > 0, { error: "required" satisfies ContactErrorCode, abort: true })
-    .refine((v) => charCount(v) >= min, { error: tooShort, abort: true })
-    .refine((v) => charCount(v) <= max, { error: tooLong, abort: true });
+const required = rule((v) => v.length > 0, "required");
+const minChars = (min: number, error: ContactErrorCode) => rule((v) => charCount(v) >= min, error);
+const maxChars = (max: number, error: ContactErrorCode) => rule((v) => charCount(v) <= max, error);
+
+const text = (normalize: (value: string) => string) =>
+  z.string({ error: "required" satisfies ContactErrorCode }).check(z.overwrite(normalize));
 
 export const contactSchema = z.object({
-  name: between(LIMITS.name.min, LIMITS.name.max, "nameTooShort", "nameTooLong").refine(
-    (v) => NAME_PATTERN.test(v),
-    { error: "nameInvalid" satisfies ContactErrorCode },
+  name: text(normalizeLine).check(
+    required,
+    minChars(LIMITS.name.min, "nameTooShort"),
+    maxChars(LIMITS.name.max, "nameTooLong"),
+    rule((v) => NAME_PATTERN.test(v), "nameInvalid"),
   ),
-  email: text(normalizeLine)
-    .refine((v) => v.length > 0, { error: "required" satisfies ContactErrorCode, abort: true })
-    .refine((v) => v.length <= LIMITS.email.max, {
-      error: "emailTooLong" satisfies ContactErrorCode,
-      abort: true,
-    })
-    .pipe(z.email({ error: "emailInvalid" satisfies ContactErrorCode })),
-  company: text(normalizeLine)
-    .refine((v) => charCount(v) <= LIMITS.company.max, {
-      error: "companyTooLong" satisfies ContactErrorCode,
-    })
-    .transform((v) => v || undefined)
-    .optional(),
-  subject: between(LIMITS.subject.min, LIMITS.subject.max, "subjectTooShort", "subjectTooLong"),
-  message: text(normalizeMultiline)
-    .refine((v) => v.length > 0, { error: "required" satisfies ContactErrorCode, abort: true })
-    .refine((v) => charCount(v) >= LIMITS.message.min, {
-      error: "messageTooShort" satisfies ContactErrorCode,
-      abort: true,
-    })
-    .refine((v) => charCount(v) <= LIMITS.message.max, {
-      error: "messageTooLong" satisfies ContactErrorCode,
-    }),
+  email: z.pipe(
+    text(normalizeLine).check(
+      required,
+      rule((v) => v.length <= LIMITS.email.max, "emailTooLong"),
+    ),
+    z.email({ error: "emailInvalid" satisfies ContactErrorCode }),
+  ),
+  company: z.optional(
+    z.pipe(
+      text(normalizeLine).check(maxChars(LIMITS.company.max, "companyTooLong")),
+      z.transform((v: string) => v || undefined),
+    ),
+  ),
+  subject: text(normalizeLine).check(
+    required,
+    minChars(LIMITS.subject.min, "subjectTooShort"),
+    maxChars(LIMITS.subject.max, "subjectTooLong"),
+  ),
+  message: text(normalizeMultiline).check(
+    required,
+    minChars(LIMITS.message.min, "messageTooShort"),
+    maxChars(LIMITS.message.max, "messageTooLong"),
+  ),
 });
 
 export type ContactFormInput = z.input<typeof contactSchema>;
@@ -101,9 +108,9 @@ export type ContactField = keyof ContactFormInput;
 export const HONEYPOT_FIELD = "website";
 export const MIN_FILL_TIME_MS = 3000;
 
-export const submissionSchema = contactSchema.extend({
-  [HONEYPOT_FIELD]: z.string().optional(),
-  startedAt: z.number().int().nonnegative(),
+export const submissionSchema = z.extend(contactSchema, {
+  [HONEYPOT_FIELD]: z.optional(z.string()),
+  startedAt: z.int().check(z.nonnegative()),
 });
 
 export type ContactSubmission = z.input<typeof submissionSchema>;
