@@ -151,6 +151,8 @@
     radial-gradient(40rem 32rem at -5% 20%, oklch(0.91 0.09 206 / 0.35), transparent 60%),
     radial-gradient(50rem 36rem at 50% 110%, oklch(0.93 0.032 262 / 0.6), transparent 70%);
   --grain-opacity: 0.035;
+  --spotlight-glow: oklch(0.87 0.062 262 / 0.45);
+  --spotlight-dot: oklch(0.4 0.175 266 / 0.28);
 
   color-scheme: light;
 }
@@ -178,6 +180,8 @@
     radial-gradient(40rem 32rem at -5% 20%, oklch(0.43 0.09 228 / 0.18), transparent 60%),
     radial-gradient(50rem 36rem at 50% 110%, oklch(0.27 0.1 268 / 0.4), transparent 70%);
   --grain-opacity: 0.05;
+  --spotlight-glow: oklch(0.6 0.125 222 / 0.14);
+  --spotlight-dot: oklch(0.86 0.125 208 / 0.22);
 
   color-scheme: dark;
 }
@@ -272,4 +276,26 @@
     opacity: var(--grain-opacity);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+}
+
+/*
+ * Cursor spotlight (see CursorSpotlight): a soft glow plus a dot grid that only shows inside the
+ * light. --spot-x / --spot-y are set in px by the component; the mask is alpha-only.
+ */
+@utility spotlight-glow {
+  background: radial-gradient(
+    32rem circle at var(--spot-x, 50%) var(--spot-y, 30%),
+    var(--spotlight-glow),
+    transparent 70%
+  );
+}
+
+@utility spotlight-dots {
+  background-image: radial-gradient(circle, var(--spotlight-dot) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(
+    18rem circle at var(--spot-x, 50%) var(--spot-y, 30%),
+    black,
+    transparent 75%
+  );
 }

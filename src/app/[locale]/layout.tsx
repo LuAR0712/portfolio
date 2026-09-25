@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { BackgroundMesh } from "@/components/layout/BackgroundMesh";
+import { CursorSpotlight } from "@/components/layout/CursorSpotlight";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
@@ -89,6 +90,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           <ThemeProvider>
             <MotionProvider>
               <BackgroundMesh />
+              <CursorSpotlight />
               <ScrollProgress />
               <SkipLink />
               <Header />
