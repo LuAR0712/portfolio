@@ -228,9 +228,10 @@
     "present": "present"
   },
   "nowPlaying": {
+    "label": "Player: what I am listening to",
     "playing": "Listening now",
     "recent": "Last played",
-    "byArtist": "by {artists}",
-    "newTab": "(opens Spotify in a new tab)"
+    "newTab": "(opens Last.fm in a new tab)",
+    "animation": "Player animation"
   }
 }

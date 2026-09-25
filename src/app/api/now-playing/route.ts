@@ -1,25 +1,21 @@
 import { NextResponse } from "next/server";
-import { getNowPlaying } from "@/features/now-playing/spotify";
+import { getNowPlaying } from "@/features/now-playing/lastfm";
 import { getServerEnv } from "@/lib/env";
 
-// Shared CDN cache: every visitor within 30 s gets the same answer, so Spotify sees at most a
+// Shared CDN cache: every visitor within 30 s gets the same answer, so Last.fm sees at most a
 // couple of requests a minute no matter the traffic.
 const CACHE = "public, s-maxage=30, stale-while-revalidate=60";
 
 export async function GET() {
-  const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = getServerEnv();
+  const { LASTFM_API_KEY, LASTFM_USERNAME } = getServerEnv();
 
-  // Not configured: the widget simply doesn't render.
-  if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET || !SPOTIFY_REFRESH_TOKEN) {
+  // Not configured: the player simply doesn't render.
+  if (!LASTFM_API_KEY || !LASTFM_USERNAME) {
     return NextResponse.json(null, { headers: { "Cache-Control": CACHE } });
   }
 
   try {
-    const track = await getNowPlaying({
-      clientId: SPOTIFY_CLIENT_ID,
-      clientSecret: SPOTIFY_CLIENT_SECRET,
-      refreshToken: SPOTIFY_REFRESH_TOKEN,
-    });
+    const track = await getNowPlaying({ apiKey: LASTFM_API_KEY, username: LASTFM_USERNAME });
     return NextResponse.json(track, { headers: { "Cache-Control": CACHE } });
   } catch (error) {
     console.error("[now-playing]", error);

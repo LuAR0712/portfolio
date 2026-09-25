@@ -32,14 +32,10 @@ describe("parseServerEnv", () => {
     );
   });
 
-  it("requires the three Spotify credentials together", () => {
-    expect(() => parseServerEnv({ SPOTIFY_CLIENT_ID: "id" })).toThrow(/must be set together/);
-    expect(
-      parseServerEnv({
-        SPOTIFY_CLIENT_ID: "id",
-        SPOTIFY_CLIENT_SECRET: "s",
-        SPOTIFY_REFRESH_TOKEN: "r",
-      }).SPOTIFY_REFRESH_TOKEN,
-    ).toBe("r");
+  it("requires the Last.fm key and username together", () => {
+    expect(() => parseServerEnv({ LASTFM_API_KEY: "key" })).toThrow(/must be set together/);
+    expect(parseServerEnv({ LASTFM_API_KEY: "key", LASTFM_USERNAME: "me" }).LASTFM_USERNAME).toBe(
+      "me",
+    );
   });
 });
