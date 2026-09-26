@@ -153,6 +153,11 @@
   --grain-opacity: 0.035;
   --spotlight-glow: oklch(0.87 0.062 262 / 0.45);
   --spotlight-dot: oklch(0.4 0.175 266 / 0.28);
+  /* Day-phase glow, following the sun in Buenos Aires (see DayPhaseAmbient). */
+  --ambient-dawn: oklch(0.9 0.08 55 / 0.55);
+  --ambient-day: oklch(0.94 0.06 95 / 0.4);
+  --ambient-dusk: oklch(0.86 0.1 20 / 0.5);
+  --ambient-night: oklch(0.82 0.07 285 / 0.45);
 
   color-scheme: light;
 }
@@ -182,6 +187,10 @@
   --grain-opacity: 0.05;
   --spotlight-glow: oklch(0.6 0.125 222 / 0.14);
   --spotlight-dot: oklch(0.86 0.125 208 / 0.22);
+  --ambient-dawn: oklch(0.55 0.12 45 / 0.24);
+  --ambient-day: oklch(0.6 0.1 220 / 0.16);
+  --ambient-dusk: oklch(0.5 0.14 15 / 0.28);
+  --ambient-night: oklch(0.42 0.15 285 / 0.42);
 
   color-scheme: dark;
 }
@@ -298,4 +307,34 @@
     black,
     transparent 75%
   );
+}
+
+/*
+ * Ambient layer tinted by the time of day in Buenos Aires. Invisible until DayPhaseAmbient sets
+ * data-ba-phase on <html>, then fades in. A slow fade is fine: this is ambience, not content.
+ */
+@utility bg-ambient {
+  background: radial-gradient(
+    70rem 42rem at 20% -15%,
+    var(--ambient-glow, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 1200ms var(--ease-out-expo);
+
+  :where([data-ba-phase]) & {
+    opacity: 1;
+  }
+  :where([data-ba-phase="dawn"]) & {
+    --ambient-glow: var(--ambient-dawn);
+  }
+  :where([data-ba-phase="day"]) & {
+    --ambient-glow: var(--ambient-day);
+  }
+  :where([data-ba-phase="dusk"]) & {
+    --ambient-glow: var(--ambient-dusk);
+  }
+  :where([data-ba-phase="night"]) & {
+    --ambient-glow: var(--ambient-night);
+  }
 }

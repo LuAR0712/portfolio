@@ -15,6 +15,9 @@ export function BackgroundMesh() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[calc(100lvh+8rem)] bg-mesh"
       style={reduceMotion ? undefined : { y }}
-    />
+    >
+      {/* Tinted by the time of day in Buenos Aires once DayPhaseAmbient sets data-ba-phase. */}
+      <div className="absolute inset-0 bg-ambient" />
+    </motion.div>
   );
 }

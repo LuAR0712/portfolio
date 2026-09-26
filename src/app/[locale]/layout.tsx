@@ -11,6 +11,7 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { TabTitleNudge } from "@/components/layout/TabTitleNudge";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { DayPhaseAmbient } from "@/features/buenos-aires/DayPhaseAmbient";
 import { pickClientMessages } from "@/i18n/client-messages";
 import { routing } from "@/i18n/routing";
 import { profile } from "@/content/profile";
@@ -94,6 +95,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
               <CursorSpotlight />
               <ScrollProgress />
               <TabTitleNudge />
+              <DayPhaseAmbient />
               <SkipLink />
               <Header />
               {/* Focusable so the skip link moves focus (and screen readers) into the content. */}
