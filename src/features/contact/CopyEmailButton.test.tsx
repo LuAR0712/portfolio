@@ -20,7 +20,8 @@ describe("CopyEmailButton", () => {
     renderWithIntl(<CopyEmailButton email="a@b.co" />);
 
     await user.click(screen.getByRole("button"));
-    expect(screen.getByText("¡Copiado!")).toBeInTheDocument();
+    // The clipboard write is async: wait for the confirmation instead of asserting synchronously.
+    expect(await screen.findByText("¡Copiado!")).toBeInTheDocument();
 
     await act(() => vi.advanceTimersByTimeAsync(2100));
     expect(screen.getByText("Copiar")).toBeInTheDocument();
