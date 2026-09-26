@@ -142,6 +142,10 @@
         "invalid": "Revisá los campos marcados.",
         "rateLimited": "Enviaste varios mensajes seguidos. Esperá unos minutos y probá de nuevo.",
         "unavailable": "No pude enviar el mensaje. Probá de nuevo más tarde o escribime a {email}."
+      },
+      "draft": {
+        "restored": "Recuperamos el mensaje que estabas escribiendo.",
+        "discard": "Descartar"
       }
     },
     "directLabel": "¿Preferís escribir directo?"

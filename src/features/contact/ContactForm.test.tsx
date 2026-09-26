@@ -4,6 +4,7 @@ import { expectNoAxeViolations } from "@/test/axe";
 import { renderWithIntl } from "@/test/render";
 import { sendContactMessage } from "./actions";
 import { ContactForm } from "./ContactForm";
+import { DRAFT_KEY, saveDraft } from "./draft";
 import type { SubmitResult } from "./submit";
 
 vi.mock("./actions", () => ({ sendContactMessage: vi.fn() }));
@@ -41,6 +42,8 @@ function deferred<T>() {
 // is run by Vitest as a teardown, which would call the mocked action after every test.
 beforeEach(() => {
   send.mockReset();
+  // Typing saves a draft; start every test from a clean form.
+  localStorage.clear();
 });
 
 describe("ContactForm", () => {
@@ -204,5 +207,55 @@ describe("ContactForm", () => {
     await screen.findAllByText("Este campo es obligatorio.");
 
     await expectNoAxeViolations(container);
+  });
+});
+
+describe("ContactForm draft", () => {
+  afterEach(() => localStorage.clear());
+
+  it("saves what the visitor types", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<ContactForm />);
+
+    await user.type(field.subject(), "Hola");
+
+    await waitFor(() =>
+      expect(JSON.parse(localStorage.getItem(DRAFT_KEY)!)).toMatchObject({ subject: "Hola" }),
+    );
+  });
+
+  it("restores a saved draft and says so", async () => {
+    saveDraft({ name: "Ana Paz", message: "Mensaje a medio escribir" });
+    renderWithIntl(<ContactForm />);
+
+    expect(
+      await screen.findByText("Recuperamos el mensaje que estabas escribiendo."),
+    ).toBeInTheDocument();
+    await waitFor(() => expect(field.name()).toHaveValue("Ana Paz"));
+    expect(field.message()).toHaveValue("Mensaje a medio escribir");
+  });
+
+  it("discards the draft on request", async () => {
+    const user = userEvent.setup();
+    saveDraft({ name: "Ana Paz" });
+    renderWithIntl(<ContactForm />);
+
+    await user.click(await screen.findByRole("button", { name: "Descartar" }));
+
+    expect(field.name()).toHaveValue("");
+    expect(localStorage.getItem(DRAFT_KEY)).toBeNull();
+    expect(screen.queryByText(/Recuperamos/)).not.toBeInTheDocument();
+  });
+
+  it("clears the draft once the message is sent", async () => {
+    const user = userEvent.setup();
+    send.mockResolvedValue({ status: "success" });
+    renderWithIntl(<ContactForm />);
+
+    await fillValid(user);
+    await user.click(submitButton());
+    await screen.findByRole("heading", { name: "¡Mensaje enviado!" });
+
+    expect(localStorage.getItem(DRAFT_KEY)).toBeNull();
   });
 });

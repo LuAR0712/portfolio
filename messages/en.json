@@ -142,6 +142,10 @@
         "invalid": "Please check the highlighted fields.",
         "rateLimited": "You've sent several messages in a row. Please wait a few minutes and try again.",
         "unavailable": "I couldn't send your message. Please try again later or email me at {email}."
+      },
+      "draft": {
+        "restored": "We restored the message you were writing.",
+        "discard": "Discard"
       }
     },
     "directLabel": "Prefer to write directly?"

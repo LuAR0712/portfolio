@@ -6,10 +6,13 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useForm, useWatch, type Control, type FieldError } from "react-hook-form";
 import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
+import { useIsClient } from "@/hooks/useIsClient";
 import { profile } from "@/content/profile";
 import { statusSwap } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { sendContactMessage } from "./actions";
+import { clearDraft, readDraft, saveDraft } from "./draft";
 import { controlStyles, FormField } from "./FormField";
 import {
   charCount,
@@ -31,6 +34,7 @@ type ServerErrorCode = Extract<SubmitResult, { status: "error" }>["code"];
 const EMPTY: ContactFormInput = { name: "", email: "", company: "", subject: "", message: "" };
 const FIELD_ORDER: ContactField[] = ["name", "email", "company", "subject", "message"];
 const WARNING_RATIO = 0.9;
+const DRAFT_SAVE_DELAY_MS = 400;
 
 export function ContactForm() {
   const t = useTranslations("contact.form");
@@ -38,12 +42,19 @@ export function ContactForm() {
   const [serverError, setServerError] = useState<ServerErrorCode | null>(null);
   const honeypotRef = useRef<HTMLInputElement>(null);
   const startedAt = useRef(0);
+  // Read once: null on the server, the saved draft (if any) in the browser. The notice only shows
+  // after hydration (isClient), so server and client markup match.
+  const [savedDraft] = useState(readDraft);
+  const [draftDismissed, setDraftDismissed] = useState(false);
+  const isClient = useIsClient();
+  const draftRestored = isClient && savedDraft !== null && !draftDismissed;
 
   const {
     register,
     handleSubmit,
     setError,
     reset,
+    subscribe,
     control,
     formState: { errors },
   } = useForm<ContactFormInput, unknown, ContactMessage>({
@@ -59,6 +70,31 @@ export function ContactForm() {
   useEffect(() => {
     startedAt.current = Date.now();
   }, []);
+
+  // Draft: restore after hydration (applying it during the first render would make the counter
+  // disagree with the server HTML), then save shortly after every change.
+  useEffect(() => {
+    if (savedDraft) reset(savedDraft);
+
+    let timeout: number | undefined;
+    const unsubscribe = subscribe({
+      formState: { values: true },
+      callback: ({ values }) => {
+        window.clearTimeout(timeout);
+        timeout = window.setTimeout(() => saveDraft(values), DRAFT_SAVE_DELAY_MS);
+      },
+    });
+    return () => {
+      window.clearTimeout(timeout);
+      unsubscribe();
+    };
+  }, [reset, subscribe, savedDraft]);
+
+  function discardDraft() {
+    clearDraft();
+    reset(EMPTY);
+    setDraftDismissed(true);
+  }
 
   const errorText = (field: ContactField, error?: FieldError) => {
     if (!error?.message) return undefined;
@@ -85,6 +121,8 @@ export function ContactForm() {
     }
 
     if (result.status === "success") {
+      clearDraft();
+      setDraftDismissed(true);
       reset(EMPTY);
       setStatus("success");
       return;
@@ -157,6 +195,25 @@ export function ContactForm() {
           exit="exit"
         >
           <p className="text-sm text-muted">{t("requiredNote")}</p>
+
+          {draftRestored && (
+            <div
+              role="status"
+              className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-border bg-surface px-4 py-3 text-sm"
+            >
+              <span className="flex items-center gap-2">
+                <Icon name="check" className="size-4 text-success" />
+                {t("draft.restored")}
+              </span>
+              <button
+                type="button"
+                onClick={discardDraft}
+                className="font-medium text-muted underline underline-offset-4 hover:text-fg"
+              >
+                {t("draft.discard")}
+              </button>
+            </div>
+          )}
 
           <div className="grid gap-6 sm:grid-cols-2">
             <FormField
