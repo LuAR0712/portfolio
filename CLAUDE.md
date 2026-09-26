@@ -44,14 +44,14 @@ src/
   app/[locale]/        layout.tsx, page.tsx, opengraph-image.tsx
   app/                 sitemap.ts, robots.ts
   components/ui/       primitives: Container, Section, ButtonLink (+ button-styles), Icon, DateRangeText
-  components/layout/   Header, Footer, SkipLink, MobileNav, LanguageSwitcher, ThemeToggle, ThemeProvider, ScrollProgress
+  components/layout/   Header, SectionNav (active section), MobileNav, Footer, SkipLink, LanguageSwitcher, ThemeToggle, ThemeProvider, ScrollProgress, BackgroundMesh, CursorSpotlight, TabTitleNudge
   components/motion/   client animation wrappers: MotionProvider, Reveal, Stagger, StaggerItem
   components/sections/ Hero, About, Experience, Projects, Skills, Education, Contact
-  features/contact/    schema (shared), submit.ts (server logic, injectable deps), actions.ts (thin server action), rate-limit, email, form components, tests
+  features/contact/    schema (shared), draft (localStorage), CopyEmailButton, submit.ts (server logic, injectable deps), actions.ts (thin server action), rate-limit, email, form components, tests
   content/             typed data: experience, projects, skills, tech (catalog), clients, education, profile
   i18n/                routing.ts, request.ts, navigation.ts
   lib/                 utils, dates (partial dates), tech-icons (logo map), motion.ts (animation variants), env.ts (validated env), constants
-  hooks/               custom hooks
+  hooks/               useIsClient, useActiveSection
   styles/              globals.css (tokens, base layers)
   test/                shared test helpers (renderWithIntl, expectNoAxeViolations)
   proxy.ts             next-intl locale detection
