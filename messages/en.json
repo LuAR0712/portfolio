@@ -226,12 +226,5 @@
   },
   "dates": {
     "present": "present"
-  },
-  "nowPlaying": {
-    "label": "Player: what I am listening to",
-    "playing": "Listening now",
-    "recent": "Last played",
-    "newTab": "(opens Last.fm in a new tab)",
-    "animation": "Player animation"
   }
 }

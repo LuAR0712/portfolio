@@ -24,16 +24,10 @@ const serverSchema = z
     CONTACT_FROM_EMAIL: optionalString,
     UPSTASH_REDIS_REST_URL: z.url().optional(),
     UPSTASH_REDIS_REST_TOKEN: optionalString,
-    LASTFM_API_KEY: optionalString,
-    LASTFM_USERNAME: optionalString,
   })
   .refine((env) => Boolean(env.UPSTASH_REDIS_REST_URL) === Boolean(env.UPSTASH_REDIS_REST_TOKEN), {
     message: "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set together",
     path: ["UPSTASH_REDIS_REST_TOKEN"],
-  })
-  .refine((env) => Boolean(env.LASTFM_API_KEY) === Boolean(env.LASTFM_USERNAME), {
-    message: "LASTFM_API_KEY and LASTFM_USERNAME must be set together",
-    path: ["LASTFM_USERNAME"],
   });
 
 export type PublicEnv = z.infer<typeof publicSchema>;

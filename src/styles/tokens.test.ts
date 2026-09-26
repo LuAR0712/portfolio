@@ -74,8 +74,6 @@ const pairs: [fg: string, bg: string, min: number][] = [
   ["--color-warning", "--color-surface", TEXT],
   ["--color-success", "--color-bg", TEXT],
   ["--color-success", "--color-surface", TEXT],
-  ["--color-lcd-fg", "--color-lcd", TEXT],
-  ["--color-lcd-muted", "--color-lcd", TEXT],
   ["--color-focus", "--color-bg", NON_TEXT],
   ["--color-focus", "--color-surface", NON_TEXT],
 ];

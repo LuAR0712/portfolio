@@ -47,7 +47,6 @@ src/
   components/layout/   Header, Footer, SkipLink, MobileNav, LanguageSwitcher, ThemeToggle, ThemeProvider, ScrollProgress
   components/motion/   client animation wrappers: MotionProvider, Reveal, Stagger, StaggerItem
   components/sections/ Hero, About, Experience, Projects, Skills, Education, Contact
-  features/now-playing/ Last.fm client (server; Spotify + YouTube via scrobbling), retro NowPlaying player; route in app/api/now-playing
   features/contact/    schema (shared), submit.ts (server logic, injectable deps), actions.ts (thin server action), rate-limit, email, form components, tests
   content/             typed data: experience, projects, skills, tech (catalog), clients, education, profile
   i18n/                routing.ts, request.ts, navigation.ts
@@ -96,7 +95,7 @@ public/cv/             luciano-rossi-cv-es.pdf, luciano-rossi-cv-en.pdf
 - **Layout**: max content width ~72rem, 12-column grid, generous and regular vertical rhythm (`--space-section`). Don't fill the full width.
 - **Avoid template look**: no stacks of identical rounded cards, no progress bars or star ratings for skills. Skills are typographic lists grouped by category; each name may carry a **monochrome** logo (`TechIcon`, Simple Icons, CC0) that takes its brand color on hover. Brand hex values come from Simple Icons data, the only non-token colors allowed, and near-black/near-white brands keep the text color. No colored icon grids.
 - **Client companies (YPF, banks) appear as plain typography**, never as brand logos: they were clients of my employer.
-- **Motion communicates hierarchy or state, never itself.** Content animations ≤600 ms, only `transform`/`opacity` (no CLS), no artificial loaders. Every animated component honors reduced motion: `<MotionConfig reducedMotion="user">` for motion components, `useReducedMotion` for scroll-linked effects, the `prefers-reduced-motion` block in `globals.css` for CSS. `src/lib/motion.test.ts` enforces the duration budget and transform/opacity-only variants. Looping state indicators (the player equalizer and scan bar) must offer a pause control (WCAG 2.2.2) and start paused with reduced motion.
+- **Motion communicates hierarchy or state, never itself.** Content animations ≤600 ms, only `transform`/`opacity` (no CLS), no artificial loaders. Every animated component honors reduced motion: `<MotionConfig reducedMotion="user">` for motion components, `useReducedMotion` for scroll-linked effects, the `prefers-reduced-motion` block in `globals.css` for CSS. `src/lib/motion.test.ts` enforces the duration budget and transform/opacity-only variants.
 - **Accessibility is a requirement**: full keyboard navigation, visible high-contrast focus, semantic landmarks, WCAG AA contrast in both themes (enforced for semantic pairs by `src/styles/tokens.test.ts` — add new pairs there), responsive from 320px.
 - Performance target: Lighthouse ≥95 in all four categories on a production build. Measure before optimizing: run Lighthouse against `npm run build && npm run start`, mobile and desktop, several runs (localhost `simulate` throttling is noisy; compare with `--throttling-method=devtools`). The LCP element (hero title) must never start at `opacity: 0`.
 

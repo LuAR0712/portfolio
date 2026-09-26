@@ -31,11 +31,4 @@ describe("parseServerEnv", () => {
       /must be set together/,
     );
   });
-
-  it("requires the Last.fm key and username together", () => {
-    expect(() => parseServerEnv({ LASTFM_API_KEY: "key" })).toThrow(/must be set together/);
-    expect(parseServerEnv({ LASTFM_API_KEY: "key", LASTFM_USERNAME: "me" }).LASTFM_USERNAME).toBe(
-      "me",
-    );
-  });
 });

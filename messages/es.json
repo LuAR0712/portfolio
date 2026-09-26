@@ -226,12 +226,5 @@
   },
   "dates": {
     "present": "actualidad"
-  },
-  "nowPlaying": {
-    "label": "Reproductor: lo que estoy escuchando",
-    "playing": "Escuchando ahora",
-    "recent": "Lo último que escuché",
-    "newTab": "(abre Last.fm en una pestaña nueva)",
-    "animation": "Animación del reproductor"
   }
 }

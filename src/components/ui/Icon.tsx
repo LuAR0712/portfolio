@@ -8,11 +8,6 @@ const paths = {
   arrowUp: "M12 19V5M5 12l7-7 7 7",
   arrowUpRight: "M7 17 17 7M8 7h9v9",
   download: "M12 4v11M7 10l5 5 5-5M5 20h14",
-  play: "M8 5v14l11-7Z",
-  pause: "M9 5v14M15 5v14",
-  skipBack: "M19 20 9 12l10-8ZM5 19V5",
-  skipForward: "M5 4l10 8-10 8ZM19 5v14",
-  music: "M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z",
 } as const;
 
 export type IconName = keyof typeof paths;

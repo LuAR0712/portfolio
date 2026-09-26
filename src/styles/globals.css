@@ -65,10 +65,6 @@
   --color-danger: oklch(0.52 0.19 27);
   --color-warning: oklch(0.53 0.12 62);
   --color-success: oklch(0.5 0.12 155);
-  /* Retro player LCD: a backlit screen, designed per theme like everything else. */
-  --color-lcd: oklch(0.9 0.055 195);
-  --color-lcd-fg: oklch(0.2 0.03 230);
-  --color-lcd-muted: oklch(0.38 0.04 225);
 
   /* Typography — fluid between 320px and 1280px viewports */
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
@@ -135,30 +131,6 @@
     }
   }
 
-  /* Equalizer bars for "now playing" (state indicator, looped; static with reduced motion). */
-  --animate-eq: eq 900ms ease-in-out infinite alternate;
-
-  @keyframes eq {
-    from {
-      transform: scaleY(0.3);
-    }
-    to {
-      transform: scaleY(1);
-    }
-  }
-
-  /* Indeterminate "playing" bar on the retro player (Last.fm gives no track position). */
-  --animate-scan: scan 1800ms ease-in-out infinite;
-
-  @keyframes scan {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(300%);
-    }
-  }
-
   @keyframes rise-solid {
     from {
       transform: translateY(1.25rem);
@@ -197,9 +169,6 @@
   --color-danger: oklch(0.72 0.16 25);
   --color-warning: oklch(0.8 0.13 78);
   --color-success: oklch(0.78 0.13 155);
-  --color-lcd: oklch(0.23 0.04 215);
-  --color-lcd-fg: oklch(0.88 0.11 195);
-  --color-lcd-muted: oklch(0.72 0.07 200);
 
   /* Dark: shadows go deeper and tighter; light doesn't travel far on a dark surface. */
   --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.4), 0 4px 16px -4px oklch(0 0 0 / 0.35);

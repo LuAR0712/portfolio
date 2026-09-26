@@ -2,7 +2,6 @@ import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { profile } from "@/content/profile";
-import { NowPlaying } from "@/features/now-playing/NowPlaying";
 
 const linkClass =
   "inline-flex items-center gap-1.5 text-muted transition-colors duration-(--duration-fast) hover:text-fg";
@@ -18,9 +17,6 @@ export function Footer() {
           <p className="font-display text-h3 font-bold">{profile.name}</p>
           <p className="max-w-prose text-sm text-muted">{t("builtWith")}</p>
           <p className="text-sm text-muted">{t("copyright", { year, name: profile.name })}</p>
-          <div className="pt-4">
-            <NowPlaying />
-          </div>
         </div>
 
         <nav aria-label={t("contactLabel")}>
