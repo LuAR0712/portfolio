@@ -2,7 +2,9 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
-import type { SectionId } from "@/lib/constants";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import { SECTION_IDS, type SectionId } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export type NavItem = { id: SectionId; label: string };
 
@@ -19,6 +21,7 @@ export function MobileNav({ items, navLabel, openLabel, closeLabel }: MobileNavP
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelId = useId();
+  const active = useActiveSection(SECTION_IDS);
 
   useEffect(() => {
     if (!open) return;
@@ -68,7 +71,11 @@ export function MobileNav({ items, navLabel, openLabel, closeLabel }: MobileNavP
               <a
                 href={`#${id}`}
                 onClick={() => setOpen(false)}
-                className="block py-3 font-display text-h3 font-semibold"
+                aria-current={id === active ? "location" : undefined}
+                className={cn(
+                  "block py-3 font-display text-h3 font-semibold",
+                  id === active ? "text-primary" : "text-fg",
+                )}
               >
                 {label}
               </a>

@@ -4,6 +4,7 @@ import { profile } from "@/content/profile";
 import { SECTION_IDS } from "@/lib/constants";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileNav, type NavItem } from "./MobileNav";
+import { SectionNav } from "./SectionNav";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
@@ -23,20 +24,7 @@ export function Header() {
           {profile.name}
         </a>
 
-        <nav aria-label={t("header.navLabel")} className="hidden lg:block">
-          <ul className="flex items-center gap-7">
-            {items.map(({ id, label }) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  className="relative text-sm text-muted transition-colors duration-(--duration-fast) after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-fg after:transition-transform after:duration-(--duration-base) after:ease-(--ease-out-expo) hover:text-fg hover:after:scale-x-100 focus-visible:after:scale-x-100"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <SectionNav items={items} label={t("header.navLabel")} />
 
         <div className="flex items-center gap-1">
           <LanguageSwitcher />
