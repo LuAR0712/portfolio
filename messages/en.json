@@ -230,5 +230,8 @@
     "copy": "Copy",
     "copyLabel": "Copy the email to the clipboard",
     "copied": "Copied!"
+  },
+  "tabNudge": {
+    "away": "👋 Hey, come back!"
   }
 }

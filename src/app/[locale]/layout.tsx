@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { TabTitleNudge } from "@/components/layout/TabTitleNudge";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { pickClientMessages } from "@/i18n/client-messages";
@@ -92,6 +93,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
               <BackgroundMesh />
               <CursorSpotlight />
               <ScrollProgress />
+              <TabTitleNudge />
               <SkipLink />
               <Header />
               {/* Focusable so the skip link moves focus (and screen readers) into the content. */}
