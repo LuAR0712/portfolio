@@ -14,6 +14,8 @@ export type Profile = {
   cv: Record<Locale, string>;
   // Static import: Next reads width/height (no layout shift) and builds a blur placeholder.
   portrait: StaticImageData;
+  // City-level only, for the "Buenos Aires now" card and the day-phase background.
+  location: { city: string; timeZone: string; latitude: number; longitude: number };
 };
 
 export const profile: Profile = {
@@ -27,4 +29,10 @@ export const profile: Profile = {
     en: "/cv/luciano-rossi-cv-en.pdf",
   },
   portrait,
+  location: {
+    city: "Buenos Aires",
+    timeZone: "America/Argentina/Buenos_Aires",
+    latitude: -34.6037,
+    longitude: -58.3816,
+  },
 };
