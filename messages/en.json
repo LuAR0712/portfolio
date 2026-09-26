@@ -237,5 +237,22 @@
   },
   "tabNudge": {
     "away": "👋 Hey, come back!"
+  },
+  "buenosAires": {
+    "label": "Buenos Aires now",
+    "weather": {
+      "clear": "Clear",
+      "clearNight": "Clear",
+      "partly": "Partly cloudy",
+      "cloudy": "Cloudy",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "snow": "Snow",
+      "storm": "Thunderstorm"
+    },
+    "same": "Same time as you",
+    "ahead": "You are {hours} h ahead",
+    "behind": "You are {hours} h behind"
   }
 }

@@ -237,5 +237,22 @@
   },
   "tabNudge": {
     "away": "👋 ¡Ey, volvé!"
+  },
+  "buenosAires": {
+    "label": "Buenos Aires ahora",
+    "weather": {
+      "clear": "Despejado",
+      "clearNight": "Despejado",
+      "partly": "Parcialmente nublado",
+      "cloudy": "Nublado",
+      "fog": "Niebla",
+      "drizzle": "Llovizna",
+      "rain": "Lluvia",
+      "snow": "Nieve",
+      "storm": "Tormenta"
+    },
+    "same": "Mismo horario que vos",
+    "ahead": "Vas {hours} h adelante",
+    "behind": "Vas {hours} h atrás"
   }
 }

@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { clients } from "@/content/clients";
 import { profile } from "@/content/profile";
+import { BuenosAiresNow } from "@/features/buenos-aires/BuenosAiresNow";
 import { heroStep } from "@/lib/motion";
 
 // Staggered entrance in CSS (runs before hydration); reduced motion collapses it in globals.css.
@@ -18,31 +19,30 @@ export function Hero() {
       <Container className="grid min-h-[calc(100svh-var(--header-height))] content-center gap-x-12 gap-y-8 py-section lg:grid-cols-12">
         {/* Portrait: a round photo with a brand ring. Small above the name on mobile; beside the
             text on desktop, sized to stay secondary to the name (and sharp at 2x from the source). */}
-        <div
-          className="relative w-28 animate-rise-solid sm:w-36 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:w-56 lg:self-center lg:justify-self-center"
-          style={heroStep(1)}
-        >
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 hidden translate-x-3 translate-y-3 rounded-full border border-primary/30 lg:block"
-          />
-          {/* Head-and-shoulders crop of a full-length photo: object-top plus a 2.25x scale whose
-              origin centers the face (~58% across, ~28% down the source). */}
-          <div className="relative aspect-square overflow-hidden rounded-full shadow-lift ring-2 ring-primary/60 ring-offset-4 ring-offset-bg">
-            <Image
-              src={profile.portrait}
-              alt={t("photoAlt")}
-              placeholder="blur"
-              loading="eager"
-              fetchPriority="high"
-              // The image is scaled 2.25x inside the frame to crop, so request 2.25x the frame width.
-              sizes="(min-width: 1024px) 32rem, (min-width: 640px) 20rem, 16rem"
-              className="size-full origin-[67.5%_45.6%] scale-[2.25] object-cover object-top"
+        <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-end lg:justify-self-center">
+          <div className="relative w-28 animate-rise-solid sm:w-36 lg:w-56" style={heroStep(1)}>
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 hidden translate-x-3 translate-y-3 rounded-full border border-primary/30 lg:block"
             />
+            {/* Head-and-shoulders crop of a full-length photo: object-top plus a 2.25x scale whose
+                origin centers the face (~58% across, ~28% down the source). */}
+            <div className="relative aspect-square overflow-hidden rounded-full shadow-lift ring-2 ring-primary/60 ring-offset-4 ring-offset-bg">
+              <Image
+                src={profile.portrait}
+                alt={t("photoAlt")}
+                placeholder="blur"
+                loading="eager"
+                fetchPriority="high"
+                // The image is scaled 2.25x inside the frame to crop, so request 2.25x the frame width.
+                sizes="(min-width: 1024px) 32rem, (min-width: 640px) 20rem, 16rem"
+                className="size-full origin-[67.5%_45.6%] scale-[2.25] object-cover object-top"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-8 lg:col-span-7 lg:row-start-1">
+        <div className="flex flex-col gap-8 lg:col-span-7 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-center">
           <div className="space-y-5">
             <h1 id="hero-title" className="animate-rise-solid text-display" style={heroStep(0)}>
               {profile.name}
@@ -74,6 +74,9 @@ export function Hero() {
             </ButtonLink>
           </div>
         </div>
+
+        {/* Local time and weather: after the CTAs on mobile so the name leads; under the photo on desktop. */}
+        <BuenosAiresNow className="lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:self-start lg:justify-self-center" />
 
         {/* Client names as typography: an at-a-glance signal of the sectors, without brand marks. */}
         <div
