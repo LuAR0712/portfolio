@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { profile } from "@/content/profile";
-import { Link } from "@/i18n/navigation";
 import { SECTION_IDS } from "@/lib/constants";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileNav, type NavItem } from "./MobileNav";
@@ -14,13 +13,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-bg/80 backdrop-blur-md">
       <Container className="flex h-(--header-height) items-center justify-between gap-3 sm:gap-6">
-        <Link
-          href="/"
+        {/* Native anchor, not the router Link: it always scrolls to the top, from anywhere on the
+            page (a Link to the current URL may keep the scroll position). */}
+        <a
+          href="#top"
           aria-label={t("header.homeLabel", { name: profile.name })}
           className="font-display text-base font-bold tracking-tight whitespace-nowrap sm:text-lg"
         >
           {profile.name}
-        </Link>
+        </a>
 
         <nav aria-label={t("header.navLabel")} className="hidden lg:block">
           <ul className="flex items-center gap-7">
