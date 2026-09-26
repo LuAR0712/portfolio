@@ -8,6 +8,10 @@ const paths = {
   arrowUp: "M12 19V5M5 12l7-7 7 7",
   arrowUpRight: "M7 17 17 7M8 7h9v9",
   download: "M12 4v11M7 10l5 5 5-5M5 20h14",
+  mail: "M4 6h16v12H4zM4 7l8 6 8-6",
+  copy: "M9 9h11v11H9zM5 15H4V4h11v1",
+  check: "m5 12 5 5L20 7",
+  user: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 20a8 8 0 0 1 16 0",
 } as const;
 
 export type IconName = keyof typeof paths;

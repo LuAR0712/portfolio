@@ -101,7 +101,6 @@
   },
   "contact": {
     "lead": "¿Tenés una posición o un proyecto en mente? Escribime y te respondo a la brevedad.",
-    "emailLabel": "Email",
     "linkedinLabel": "LinkedIn",
     "newTab": "(se abre en una pestaña nueva)",
     "form": {
@@ -226,5 +225,10 @@
   },
   "dates": {
     "present": "actualidad"
+  },
+  "copyEmail": {
+    "copy": "Copiar",
+    "copyLabel": "Copiar el email al portapapeles",
+    "copied": "¡Copiado!"
   }
 }

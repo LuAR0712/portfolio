@@ -82,10 +82,12 @@ describe("home sections", () => {
     );
   });
 
-  it("shows the LinkedIn URL without protocol or trailing slash", () => {
-    renderPage();
-    const link = screen.getByRole("link", { name: /luciano-a-rossi-98a38817b/ });
-    expect(link.firstChild?.textContent).toBe("linkedin.com/in/luciano-a-rossi-98a38817b");
+  it("links to LinkedIn by name instead of printing the URL", () => {
+    const { container } = renderPage();
+    const link = screen.getByRole("link", { name: /LinkedIn/ });
+
+    expect(link).toHaveAttribute("href", "https://www.linkedin.com/in/luciano-a-rossi-98a38817b/");
+    expect(container.textContent).not.toContain("linkedin.com/in/");
   });
 
   it("never renders a phone number", () => {
