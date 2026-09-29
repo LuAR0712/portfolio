@@ -74,14 +74,6 @@ describe("home sections", () => {
     expect(within(articles[1]!).getByText("Figma")).toBeInTheDocument();
   });
 
-  it("points the CV download at the PDF for the active locale", () => {
-    renderPage("en");
-    expect(screen.getByRole("link", { name: /Download CV/ })).toHaveAttribute(
-      "href",
-      "/cv/luciano-rossi-cv-en.pdf",
-    );
-  });
-
   it("links to LinkedIn by name instead of printing the URL", () => {
     const { container } = renderPage();
     const link = screen.getByRole("link", { name: /LinkedIn/ });

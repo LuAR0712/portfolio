@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { profile } from "@/content/profile";
+import { CvButton } from "./CvButton";
 
 const linkClass =
   "inline-flex items-center gap-1.5 text-muted transition-colors duration-(--duration-fast) hover:text-fg";
@@ -12,7 +13,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border">
-      <Container className="flex flex-col gap-10 py-12 md:flex-row md:items-end md:justify-between">
+      <Container className="flex flex-col gap-10 pt-12 pb-28 md:flex-row md:items-end md:justify-between">
         <div className="space-y-2">
           <p className="font-display text-h3 font-bold">{profile.name}</p>
           <p className="max-w-prose text-sm text-muted">{t("builtWith")}</p>
@@ -47,6 +48,8 @@ export function Footer() {
           </ul>
         </nav>
       </Container>
+      {/* Fixed to the viewport corner; lives in the footer landmark so it is not orphaned content. */}
+      <CvButton />
     </footer>
   );
 }

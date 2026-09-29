@@ -37,8 +37,6 @@
     "positioning": "Construyo aplicaciones empresariales para los sectores energético y financiero, desde la arquitectura del frontend hasta el último componente.",
     "ctaProjects": "Ver proyectos",
     "ctaContact": "Contactame",
-    "ctaCv": "Descargar CV",
-    "cvFormat": "(PDF)",
     "clientsLabel": "Proyectos para",
     "photoAlt": "Foto de Luciano Rossi"
   },
@@ -254,5 +252,10 @@
     "same": "Mismo horario que vos",
     "ahead": "Vas {hours} h adelante",
     "behind": "Vas {hours} h atrás"
+  },
+  "cvButton": {
+    "label": "Descargar CV",
+    "short": "CV",
+    "ariaLabel": "Descargar CV en PDF"
   }
 }

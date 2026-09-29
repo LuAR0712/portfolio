@@ -37,8 +37,6 @@
     "positioning": "I build enterprise applications for the energy and financial sectors, from frontend architecture down to the last component.",
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
-    "ctaCv": "Download CV",
-    "cvFormat": "(PDF)",
     "clientsLabel": "Built for",
     "photoAlt": "Photo of Luciano Rossi"
   },
@@ -254,5 +252,10 @@
     "same": "Same time as you",
     "ahead": "You are {hours} h ahead",
     "behind": "You are {hours} h behind"
+  },
+  "cvButton": {
+    "label": "Download CV",
+    "short": "CV",
+    "ariaLabel": "Download CV as PDF"
   }
 }

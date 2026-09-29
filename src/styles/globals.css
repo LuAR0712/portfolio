@@ -131,6 +131,19 @@
     }
   }
 
+  /* Download arrow dropping into its tray while the CV button is hovered or focused. */
+  --animate-nudge-down: nudge-down 700ms var(--ease-in-out-quart) infinite;
+
+  @keyframes nudge-down {
+    0%,
+    100% {
+      transform: translateY(-1px);
+    }
+    50% {
+      transform: translateY(3px);
+    }
+  }
+
   @keyframes rise-solid {
     from {
       transform: translateY(1.25rem);
