@@ -3,7 +3,7 @@
 Personal portfolio: a bilingual (Spanish / English), light and dark site built with Next.js,
 React and TypeScript, treated as a production product rather than a template.
 
-**Live site:** _TODO: add the production URL after the first deploy._
+**Live site:** [lucianorossiportfolio.vercel.app](https://lucianorossiportfolio.vercel.app)
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="docs/hero-light.jpg" />
