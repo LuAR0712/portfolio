@@ -47,8 +47,23 @@ export type TechIconId = keyof typeof icons;
 
 export const TECH_ICON_IDS = Object.keys(icons) as TechIconId[];
 
-// Where the sprite is served (app/tech-icons.svg/route.ts).
-export const TECH_ICON_SPRITE = "/tech-icons.svg";
+/*
+ * Where the sprite is served (app/tech-icons.svg/route.ts). The query string is a hash of the icon
+ * set: browsers cache the sprite for a day, so adding or changing an icon must change the URL or
+ * they keep referencing symbols that the cached copy doesn't have.
+ */
+function hashIcons(): string {
+  let hash = 0x811c9dc5; // FNV-1a, 32-bit
+  for (const id of Object.keys(icons) as TechIconId[]) {
+    for (const char of `${id}:${icons[id].path};`) {
+      hash ^= char.charCodeAt(0);
+      hash = Math.imul(hash, 0x01000193);
+    }
+  }
+  return (hash >>> 0).toString(36);
+}
+
+export const TECH_ICON_SPRITE = `/tech-icons.svg?v=${hashIcons()}`;
 
 export function getTechIcon(id: TechIconId): SimpleIcon {
   return icons[id];
