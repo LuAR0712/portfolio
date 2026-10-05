@@ -278,6 +278,27 @@
   animation-timing-function: var(--ease-out-expo);
 }
 
+/*
+ * Touch screens have no hover, so tech logos take their brand color (--brand, set by TechIcon)
+ * while they cross the middle of the viewport instead. Scroll-driven in CSS: no JS, no scroll
+ * listeners. Browsers without view timelines keep the monochrome logo, as does reduced motion.
+ */
+@utility scroll-brand {
+  @media (hover: none) and (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: brand-in-view linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+@keyframes brand-in-view {
+  35%,
+  65% {
+    color: var(--brand);
+  }
+}
+
 /* Page background: mesh gradient (fixed layer, see BackgroundMesh) + faint SVG grain. No images. */
 @utility bg-mesh {
   background-image: var(--gradient-mesh);
