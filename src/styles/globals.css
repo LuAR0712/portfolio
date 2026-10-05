@@ -156,7 +156,7 @@
 
 :root {
   --space-gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
-  --space-section: clamp(3.5rem, 0.5rem + 11vw, 9.5rem);
+  --space-section: clamp(3.5rem, 1.5rem + 5vw, 5.5rem);
   --header-height: 4rem;
 
   --gradient-mesh:
