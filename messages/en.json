@@ -169,6 +169,7 @@
         "highlights": [
           "Frontend architecture defined together with a senior developer; today I lead the frontend work on the project.",
           "Component library built from scratch with styled-components from the UX designs, intended as the base template for the company's upcoming products.",
+          "Mobile development with React Native and Flutter as part of the Mobile unit.",
           "Gradually taking on .NET backend work: bug fixing and endpoint development."
         ]
       },
@@ -199,6 +200,7 @@
       "categories": {
         "languages": "Languages",
         "frontend": "Frontend",
+        "mobile": "Mobile",
         "testing": "Testing",
         "design": "Design",
         "platform": "Backend and cloud",

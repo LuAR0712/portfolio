@@ -17,7 +17,14 @@ export const projects: Project[] = [
   {
     id: "nexplan",
     period: { start: { year: 2024 }, end: null },
-    stack: [tech.react, tech.typescript, tech.styledComponents, tech.dotnet],
+    stack: [
+      tech.react,
+      tech.typescript,
+      tech.styledComponents,
+      tech.reactNative,
+      tech.flutter,
+      tech.dotnet,
+    ],
   },
   {
     id: "iap",
