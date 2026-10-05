@@ -54,6 +54,8 @@
       "title": "Skills"
     },
     "education": {
+      "via": "via {sponsor}",
+      "credential": "View certificate",
       "title": "Education"
     },
     "contact": {
@@ -215,6 +217,9 @@
     "education": {
       "uai": {
         "title": "Systems Engineering"
+      },
+      "udemyDotnet": {
+        "title": "C# .NET full stack course · certificate (23.5 h)"
       },
       "coderhouse": {
         "title": "English for Developers · Advanced level"

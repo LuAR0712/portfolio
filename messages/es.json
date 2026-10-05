@@ -54,6 +54,8 @@
       "title": "Tecnologías"
     },
     "education": {
+      "via": "a través de {sponsor}",
+      "credential": "Ver certificado",
       "title": "Formación"
     },
     "contact": {
@@ -215,6 +217,9 @@
     "education": {
       "uai": {
         "title": "Ingeniería en Sistemas"
+      },
+      "udemyDotnet": {
+        "title": "Curso de C# .NET full stack · certificado (23,5 h)"
       },
       "coderhouse": {
         "title": "Inglés para Desarrolladores · nivel Advanced"
